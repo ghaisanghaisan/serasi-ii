@@ -2,29 +2,29 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5cl8p"]
 [ext_resource type="Texture2D" uid="uid://dn8wqcgftmaau" path="res://assets/die.png" id="2_60ur5"]
-[ext_resource type="Texture2D" uid="uid://bg0fom7o8bl5h" path="res://assets/mario.png" id="2_p48rc"]
+[ext_resource type="Texture2D" uid="uid://cm0y0gruhc50g" path="res://assets/mario.png" id="2_p48rc"]
 [ext_resource type="Script" path="res://scripts/player_animated_sprite.gd" id="3_3lyjm"]
 [ext_resource type="Shape2D" uid="uid://c0h8hpyksu1ie" path="res://resources/Collision Shapes/serasi_mario_collision_check.tres" id="4_oy28f"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qova1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyv5y"]
 atlas = ExtResource("2_p48rc")
-region = Rect2(50, 10, 40, 40)
+region = Rect2(80, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjs56"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uh8k"]
 atlas = ExtResource("2_p48rc")
-region = Rect2(50, 50, 40, 40)
+region = Rect2(80, 40, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ctuc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkon5"]
 atlas = ExtResource("2_p48rc")
-region = Rect2(170, 10, 40, 40)
+region = Rect2(200, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oc3co"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjp4n"]
 atlas = ExtResource("2_p48rc")
-region = Rect2(210, 10, 40, 40)
+region = Rect2(240, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cdyvh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vikm3"]
 atlas = ExtResource("2_p48rc")
-region = Rect2(210, 50, 40, 40)
+region = Rect2(240, 40, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyf8u"]
 animations = [{
@@ -38,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qova1")
+"texture": SubResource("AtlasTexture_iyv5y")
 }],
 "loop": true,
 "name": &"serasi_idle",
@@ -46,7 +46,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xjs56")
+"texture": SubResource("AtlasTexture_8uh8k")
 }],
 "loop": true,
 "name": &"serasi_jump",
@@ -54,10 +54,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ctuc")
+"texture": SubResource("AtlasTexture_xkon5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oc3co")
+"texture": SubResource("AtlasTexture_kjp4n")
 }],
 "loop": true,
 "name": &"serasi_run",
@@ -65,7 +65,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cdyvh")
+"texture": SubResource("AtlasTexture_vikm3")
 }],
 "loop": true,
 "name": &"serasi_slide",
@@ -78,7 +78,7 @@ script = ExtResource("1_5cl8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lyf8u")
-animation = &"serasi_slide"
+animation = &"die"
 script = ExtResource("3_3lyjm")
 
 [node name="Area2D" type="Area2D" parent="."]

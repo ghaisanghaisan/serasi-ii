@@ -2,11 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://kau8jvnp8atu"
-=======
-uid="uid://bg0fom7o8bl5h"
->>>>>>> c456c2e (implemented multi choice)
+uid="uid://cm0y0gruhc50g"
 path="res://.godot/imported/mario.png-e0067e72bc20cbd9d4337ce648171fac.ctex"
 metadata={
 "vram_texture": false
