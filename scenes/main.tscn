@@ -1,0 +1,100 @@
+[gd_scene load_steps=18 format=3 uid="uid://swereywol7bd"]
+
+[ext_resource type="Texture2D" uid="uid://co3bdq1m4vg4f" path="res://assets/Sprites/Brick.png" id="1_46237"]
+[ext_resource type="PackedScene" uid="uid://d22ldn7cuak65" path="res://scenes/player.tscn" id="1_bev5m"]
+[ext_resource type="Texture2D" uid="uid://dbhkvad8kmca" path="res://assets/Sprites/UndergroundBlock.png" id="2_ia7x1"]
+[ext_resource type="Texture2D" uid="uid://dtkrgfs1x5qrr" path="res://assets/Sprites/UndergroundBrick.png" id="3_h4sxl"]
+[ext_resource type="Texture2D" uid="uid://bh2i2pbd72n30" path="res://assets/Sprites/GroundBlock.png" id="4_flg85"]
+[ext_resource type="Texture2D" uid="uid://8as4lix1a8pr" path="res://assets/Sprites/HardBlock.png" id="5_yuvsx"]
+[ext_resource type="Script" path="res://scripts/multi_choice_question.gd" id="7_ent7s"]
+[ext_resource type="PackedScene" uid="uid://o78vwx7cq1xh" path="res://scenes/multi_choice_block.tscn" id="8_w7djp"]
+[ext_resource type="PackedScene" uid="uid://dyaf5m4xwmujd" path="res://scenes/question_block.tscn" id="9_stusg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_22h3m"]
+texture = ExtResource("1_46237")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xi30n"]
+texture = ExtResource("2_ia7x1")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jaiu8"]
+texture = ExtResource("3_h4sxl")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ymgp6"]
+texture = ExtResource("4_flg85")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cxqj"]
+texture = ExtResource("5_yuvsx")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_0ncie"]
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_22h3m")
+sources/1 = SubResource("TileSetAtlasSource_xi30n")
+sources/2 = SubResource("TileSetAtlasSource_jaiu8")
+sources/3 = SubResource("TileSetAtlasSource_ymgp6")
+sources/4 = SubResource("TileSetAtlasSource_8cxqj")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3tl4f"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6jl1a"]
+normal = Vector2(1, 0)
+distance = -152.0
+
+[node name="main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_bev5m")]
+position = Vector2(-97, 52)
+collision_mask = 22
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(97, -52)
+zoom = Vector2(2.75, 2.75)
+limit_left = -240
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.8
+drag_bottom_margin = 1.0
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(6, 0)
+tile_set = SubResource("TileSet_0ncie")
+format = 2
+layer_0/tile_data = PackedInt32Array(327665, 3, 0, 393201, 3, 0, 458737, 3, 0, 524273, 3, 0, 327666, 3, 0, 393202, 3, 0, 458738, 3, 0, 524274, 3, 0, 327667, 3, 0, 393203, 3, 0, 458739, 3, 0, 524275, 3, 0, 327668, 3, 0, 393204, 3, 0, 458740, 3, 0, 524276, 3, 0, 327669, 3, 0, 393205, 3, 0, 458741, 3, 0, 524277, 3, 0, 327670, 3, 0, 393206, 3, 0, 458742, 3, 0, 524278, 3, 0, 327671, 3, 0, 393207, 3, 0, 458743, 3, 0, 524279, 3, 0, 327672, 3, 0, 393208, 3, 0, 458744, 3, 0, 524280, 3, 0, 327673, 3, 0, 393209, 3, 0, 458745, 3, 0, 524281, 3, 0, 327674, 3, 0, 393210, 3, 0, 458746, 3, 0, 524282, 3, 0, 327675, 3, 0, 393211, 3, 0, 458747, 3, 0, 524283, 3, 0, 327676, 3, 0, 393212, 3, 0, 458748, 3, 0, 524284, 3, 0, 327677, 3, 0, 393213, 3, 0, 458749, 3, 0, 524285, 3, 0, 327678, 3, 0, 393214, 3, 0, 458750, 3, 0, 524286, 3, 0, 327679, 3, 0, 393215, 3, 0, 458751, 3, 0, 524287, 3, 0, 262144, 3, 0, 327680, 3, 0, 393216, 3, 0, 458752, 3, 0, 262145, 3, 0, 327681, 3, 0, 393217, 3, 0, 458753, 3, 0, 262146, 3, 0, 327682, 3, 0, 393218, 3, 0, 458754, 3, 0, 262147, 3, 0, 327683, 3, 0, 393219, 3, 0, 458755, 3, 0, 262148, 3, 0, 327684, 3, 0, 393220, 3, 0, 458756, 3, 0, 262149, 3, 0, 327685, 3, 0, 393221, 3, 0, 458757, 3, 0, 262150, 3, 0, 327686, 3, 0, 393222, 3, 0, 458758, 3, 0, 262151, 3, 0, 327687, 3, 0, 393223, 3, 0, 458759, 3, 0, 262152, 3, 0, 327688, 3, 0, 393224, 3, 0, 458760, 3, 0, 262153, 3, 0, 327689, 3, 0, 393225, 3, 0, 458761, 3, 0, 262154, 3, 0, 327690, 3, 0, 393226, 3, 0, 458762, 3, 0, 262155, 3, 0, 327691, 3, 0, 393227, 3, 0, 458763, 3, 0, 262156, 3, 0, 327692, 3, 0, 393228, 3, 0, 458764, 3, 0, 262157, 3, 0, 327693, 3, 0, 393229, 3, 0, 458765, 3, 0, 262158, 3, 0, 327694, 3, 0, 393230, 3, 0, 458766, 3, 0, 262159, 3, 0, 327695, 3, 0, 393231, 3, 0, 458767, 3, 0, 262160, 3, 0, 327696, 3, 0, 393232, 3, 0, 458768, 3, 0, 262161, 3, 0, 327697, 3, 0, 393233, 3, 0, 458769, 3, 0, 262162, 3, 0, 327698, 3, 0, 393234, 3, 0, 458770, 3, 0, 262163, 3, 0, 327699, 3, 0, 393235, 3, 0, 458771, 3, 0, 262164, 3, 0, 327700, 3, 0, 393236, 3, 0, 458772, 3, 0, 262165, 3, 0, 327701, 3, 0, 393237, 3, 0, 458773, 3, 0, 262166, 3, 0, 327702, 3, 0, 393238, 3, 0, 458774, 3, 0, 262167, 3, 0, 327703, 3, 0, 393239, 3, 0, 458775, 3, 0, 262168, 3, 0, 327704, 3, 0, 393240, 3, 0, 458776, 3, 0, 262169, 3, 0, 327705, 3, 0, 393241, 3, 0, 458777, 3, 0, 262170, 3, 0, 327706, 3, 0, 393242, 3, 0, 458778, 3, 0, 262171, 3, 0, 327707, 3, 0, 393243, 3, 0, 458779, 3, 0, 262172, 3, 0, 327708, 3, 0, 393244, 3, 0, 458780, 3, 0, 262173, 3, 0, 327709, 3, 0, 393245, 3, 0, 458781, 3, 0, 262174, 3, 0, 327710, 3, 0, 393246, 3, 0, 458782, 3, 0, 262175, 3, 0, 327711, 3, 0, 393247, 3, 0, 458783, 3, 0, 262176, 3, 0, 327712, 3, 0, 393248, 3, 0, 458784, 3, 0, 262177, 3, 0, 327713, 3, 0, 393249, 3, 0, 458785, 3, 0, 262178, 3, 0, 327714, 3, 0, 393250, 3, 0, 458786, 3, 0, 262179, 3, 0, 327715, 3, 0, 393251, 3, 0, 458787, 3, 0, 262180, 3, 0, 327716, 3, 0, 393252, 3, 0, 458788, 3, 0, 262181, 3, 0, 327717, 3, 0, 393253, 3, 0, 458789, 3, 0, 262182, 3, 0, 327718, 3, 0, 393254, 3, 0, 458790, 3, 0, 262183, 3, 0, 327719, 3, 0, 393255, 3, 0, 458791, 3, 0, 262184, 3, 0, 327720, 3, 0, 393256, 3, 0, 458792, 3, 0, 262185, 3, 0, 327721, 3, 0, 393257, 3, 0, 458793, 3, 0, 262186, 3, 0, 327722, 3, 0, 393258, 3, 0, 458794, 3, 0, 262187, 3, 0, 327723, 3, 0, 393259, 3, 0, 458795, 3, 0, 262188, 3, 0, 327724, 3, 0, 393260, 3, 0, 458796, 3, 0, 262189, 3, 0, 327725, 3, 0, 393261, 3, 0, 458797, 3, 0, 262190, 3, 0, 327726, 3, 0, 393262, 3, 0, 458798, 3, 0, 262191, 3, 0, 327727, 3, 0, 393263, 3, 0, 458799, 3, 0, 262192, 3, 0, 327728, 3, 0, 393264, 3, 0, 458800, 3, 0, 262193, 3, 0, 327729, 3, 0, 393265, 3, 0, 458801, 3, 0, 262194, 3, 0, 327730, 3, 0, 393266, 3, 0, 458802, 3, 0, 262195, 3, 0, 327731, 3, 0, 393267, 3, 0, 458803, 3, 0, 262196, 3, 0, 327732, 3, 0, 393268, 3, 0, 458804, 3, 0, 262197, 3, 0, 327733, 3, 0, 393269, 3, 0, 458805, 3, 0, 262198, 3, 0, 327734, 3, 0, 393270, 3, 0, 458806, 3, 0)
+
+[node name="WorldBoundary" type="StaticBody2D" parent="."]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_3tl4f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary"]
+shape = SubResource("WorldBoundaryShape2D_6jl1a")
+
+[node name="QuestionBlock" parent="." instance=ExtResource("9_stusg")]
+position = Vector2(-32, -8)
+
+[node name="MultiChoiceQuestion" type="Node" parent="."]
+script = ExtResource("7_ent7s")
+
+[node name="MultiChoiceBlock1" parent="MultiChoiceQuestion" instance=ExtResource("8_w7djp")]
+position = Vector2(48, -8)
+
+[node name="MultiChoiceBlock2" parent="MultiChoiceQuestion" instance=ExtResource("8_w7djp")]
+position = Vector2(136, -8)
+choice = 1
+
+[node name="MultiChoiceBlock3" parent="MultiChoiceQuestion" instance=ExtResource("8_w7djp")]
+position = Vector2(224, -8)
+choice = 2
+
+[node name="MultiChoiceBlock4" parent="MultiChoiceQuestion" instance=ExtResource("8_w7djp")]
+position = Vector2(312, -8)
+choice = 3

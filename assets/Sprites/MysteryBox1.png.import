@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://kau8jvnp8atu"
-=======
-uid="uid://bg0fom7o8bl5h"
->>>>>>> c456c2e (implemented multi choice)
-path="res://.godot/imported/mario.png-e0067e72bc20cbd9d4337ce648171fac.ctex"
+uid="uid://cw5a4ngls41r5"
+path="res://.godot/imported/MysteryBox1.png-1908934959ddc1e32e8b1c1801166d8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mario.png"
-dest_files=["res://.godot/imported/mario.png-e0067e72bc20cbd9d4337ce648171fac.ctex"]
+source_file="res://assets/Sprites/MysteryBox1.png"
+dest_files=["res://.godot/imported/MysteryBox1.png-1908934959ddc1e32e8b1c1801166d8d.ctex"]
 
 [params]
 

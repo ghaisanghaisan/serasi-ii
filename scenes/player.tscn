@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://d22ldn7cuak65"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_5cl8p"]
+[ext_resource type="Texture2D" uid="uid://dn8wqcgftmaau" path="res://assets/die.png" id="2_60ur5"]
+[ext_resource type="Texture2D" uid="uid://bg0fom7o8bl5h" path="res://assets/mario.png" id="2_p48rc"]
+[ext_resource type="Script" path="res://scripts/player_animated_sprite.gd" id="3_3lyjm"]
+[ext_resource type="Shape2D" uid="uid://c0h8hpyksu1ie" path="res://resources/Collision Shapes/serasi_mario_collision_check.tres" id="4_oy28f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qova1"]
+atlas = ExtResource("2_p48rc")
+region = Rect2(50, 10, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjs56"]
+atlas = ExtResource("2_p48rc")
+region = Rect2(50, 50, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ctuc"]
+atlas = ExtResource("2_p48rc")
+region = Rect2(170, 10, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc3co"]
+atlas = ExtResource("2_p48rc")
+region = Rect2(210, 10, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdyvh"]
+atlas = ExtResource("2_p48rc")
+region = Rect2(210, 50, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lyf8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_60ur5")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qova1")
+}],
+"loop": true,
+"name": &"serasi_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjs56")
+}],
+"loop": true,
+"name": &"serasi_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ctuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc3co")
+}],
+"loop": true,
+"name": &"serasi_run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdyvh")
+}],
+"loop": true,
+"name": &"serasi_slide",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 30
+script = ExtResource("1_5cl8p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lyf8u")
+animation = &"serasi_slide"
+script = ExtResource("3_3lyjm")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 30
+
+[node name="AreaCollisionCheck" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1.5)
+shape = ExtResource("4_oy28f")
+
+[node name="BodyCollisionCheck" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = ExtResource("4_oy28f")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://o78vwx7cq1xh"]
+
+[ext_resource type="Script" path="res://scripts/multi_choice_block.gd" id="1_06duu"]
+[ext_resource type="Texture2D" uid="uid://dxstf3eeggcla" path="res://assets/Sprites/EmptyBlock.png" id="2_ps221"]
+[ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="3_33gik"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfby4"]
+size = Vector2(16, 16)
+
+[node name="MultiChoiceBlock" type="StaticBody2D"]
+collision_layer = 16
+script = ExtResource("1_06duu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rfby4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ps221")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -48.0
+offset_top = -32.0
+offset_right = 46.0
+offset_bottom = -9.0
+theme = ExtResource("3_33gik")
+theme_override_font_sizes/font_size = 14
+text = "Kurang Baik"
+horizontal_alignment = 1
+vertical_alignment = 1

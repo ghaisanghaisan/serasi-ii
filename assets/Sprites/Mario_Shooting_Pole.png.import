@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://kau8jvnp8atu"
-=======
-uid="uid://bg0fom7o8bl5h"
->>>>>>> c456c2e (implemented multi choice)
-path="res://.godot/imported/mario.png-e0067e72bc20cbd9d4337ce648171fac.ctex"
+uid="uid://cwns46e1wprcc"
+path="res://.godot/imported/Mario_Shooting_Pole.png-b4c9f987ad5632ec55c8c43d3304d38f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mario.png"
-dest_files=["res://.godot/imported/mario.png-e0067e72bc20cbd9d4337ce648171fac.ctex"]
+source_file="res://assets/Sprites/Mario_Shooting_Pole.png"
+dest_files=["res://.godot/imported/Mario_Shooting_Pole.png-b4c9f987ad5632ec55c8c43d3304d38f.ctex"]
 
 [params]
 

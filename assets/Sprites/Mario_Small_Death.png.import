@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://kau8jvnp8atu"
-=======
-uid="uid://bg0fom7o8bl5h"
->>>>>>> c456c2e (implemented multi choice)
-path="res://.godot/imported/mario.png-e0067e72bc20cbd9d4337ce648171fac.ctex"
+uid="uid://bausni6inywyv"
+path="res://.godot/imported/Mario_Small_Death.png-607f3df61b47db292f6ce20d2c8173f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mario.png"
-dest_files=["res://.godot/imported/mario.png-e0067e72bc20cbd9d4337ce648171fac.ctex"]
+source_file="res://assets/Sprites/Mario_Small_Death.png"
+dest_files=["res://.godot/imported/Mario_Small_Death.png-607f3df61b47db292f6ce20d2c8173f9.ctex"]
 
 [params]
 

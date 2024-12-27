@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyaf5m4xwmujd"]
+
+[ext_resource type="Script" path="res://scripts/question_block.gd" id="1_f40t5"]
+[ext_resource type="Texture2D" uid="uid://cv5q5jjpotegk" path="res://assets/Sprites/MysteryBlock.png" id="2_le6ev"]
+[ext_resource type="Texture2D" uid="uid://cw5a4ngls41r5" path="res://assets/Sprites/MysteryBox1.png" id="3_l2fwu"]
+[ext_resource type="Texture2D" uid="uid://n3wf4wh4jvb8" path="res://assets/Sprites/MysterBox2.png" id="4_50my7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8gso"]
+size = Vector2(16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0nue3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_le6ev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l2fwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_50my7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="QuestionBlock" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 13
+script = ExtResource("1_f40t5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i8gso")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0nue3")
+autoplay = "default"
+frame_progress = 0.769327
