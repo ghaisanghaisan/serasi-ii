@@ -56,6 +56,12 @@ distance = -152.0
 unique_name_in_owner = true
 position = Vector2(-97, 52)
 collision_mask = 22
+run_speed_damping = null
+speed = null
+jump_velocity = null
+min_stomp_degree = null
+max_stomp_degree = null
+stomp_bump = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(97, -52)
@@ -81,7 +87,7 @@ physics_material_override = SubResource("PhysicsMaterial_3tl4f")
 shape = SubResource("WorldBoundaryShape2D_6jl1a")
 
 [node name="QuestionBlock" parent="." node_paths=PackedStringArray("question_ui") instance=ExtResource("9_stusg")]
-position = Vector2(-40, -8)
+position = Vector2(-32, -8)
 question_ui = NodePath("../Question")
 
 [node name="MultiChoiceQuestion" type="Node" parent="."]
@@ -114,6 +120,3 @@ kalimat_pertanyaan = "awefwaef"
 [node name="Question3" parent="." instance=ExtResource("10_1qmpa")]
 visible = false
 kalimat_pertanyaan = "bbbbbbbb"
-
-[node name="HTTPForm" type="HTTPRequest" parent="."]
-unique_name_in_owner = true

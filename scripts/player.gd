@@ -19,6 +19,7 @@ const POINTS_LABEL_SCENE = preload("res://scenes/points_label.tscn")
 
 
 var is_dead = false
+var can_move = true
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -37,11 +38,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var player_mode = PlayerMode.SERASI
 
-
-func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		
+func player_movement(delta: float):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		
@@ -56,13 +53,22 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed * delta)
 		
 	animated_sprite_2d.trigger_animation(velocity, direction, player_mode)
-	
-	
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		
+	if can_move:
+		player_movement(delta)
+	else:
+		velocity.x = 0;
+		animated_sprite_2d.play("serasi_idle")
+
 	var collision = get_last_slide_collision()
 	
 	if collision != null:
 		handle_movement_collision(collision)
-		
+	
 	move_and_slide()
 	
 func handle_movement_collision(collision: KinematicCollision2D):
@@ -111,3 +117,9 @@ func die():
 	death_tween.chain().tween_property(self, "position", position + Vector2(0, 64), .25)
 	death_tween.tween_callback(func (): get_tree().reload_current_scene())
 	
+	
+func disable_movement():
+	can_move = false
+
+func enable_movement():
+	can_move = true

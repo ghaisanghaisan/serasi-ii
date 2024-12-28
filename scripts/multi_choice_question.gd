@@ -1,5 +1,7 @@
 extends Node
 
+@export var question: SerasiForm.Questions; 
+
 @onready var choices_nodes = [
 	$MultiChoiceBlock1,
 	$MultiChoiceBlock2,
@@ -31,3 +33,5 @@ func pick_choice(index: int, choice: SerasiForm.MultiChoice):
 		choices_picked[i] = false
 	choices_picked[index] = true
 	redraw_choices()
+	
+	SerasiForm.set_multi_choice(question, choice);
