@@ -2,6 +2,7 @@ extends Node
 
 var FormData =  {
   "Nama": null,
+  "Panggilan": null,
   "Kelas": null,
   "FasilitasA": null,
   "FasilitasB": null,
@@ -16,6 +17,18 @@ var FormData =  {
 }
 
 
+enum Kelas {
+	# X – A to H
+	XA, XB, XC, XD, XE, XF, XG, XH,
+
+	# XI – A to H
+	XIA, XIB, XIC, XID, XIE, XIF, XIG, XIH,
+
+	# XII – A to H
+	XIIA, XIIB, XIIC, XIID, XIIE, XIIF, XIIG, XIIH
+}
+
+
 enum MultiChoice {
 	TidakBaik,
 	KurangBaik,
@@ -24,6 +37,7 @@ enum MultiChoice {
 }
 enum Questions {
 	Nama,
+	Panggilan,
 	Kelas,
 	FasilitasA,
 	FasilitasB,

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://o78vwx7cq1xh" path="res://scenes/multi_choice_block.tscn" id="8_w7djp"]
 [ext_resource type="PackedScene" uid="uid://dyaf5m4xwmujd" path="res://scenes/question_block.tscn" id="9_stusg"]
 [ext_resource type="PackedScene" uid="uid://bwmx0j72n6cs4" path="res://scenes/question.tscn" id="10_1qmpa"]
-[ext_resource type="Script" path="res://scenes/win.gd" id="11_lj8i7"]
+[ext_resource type="Script" path="res://scripts/win.gd" id="11_lj8i7"]
 [ext_resource type="PackedScene" uid="uid://bq6a0vfr6qkss" path="res://scenes/pipe.tscn" id="12_snqul"]
 [ext_resource type="PackedScene" uid="uid://osadctn5vqg5" path="res://scenes/hud.tscn" id="13_h1r2n"]
 

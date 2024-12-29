@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkl3tuvaa4upn"]
+
+[ext_resource type="Script" path="res://scripts/character_creation.gd" id="1_pdy0p"]
+[ext_resource type="Texture2D" uid="uid://cmf0bmc8k88nf" path="res://assets/bg_test.png" id="1_uonlc"]
+[ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="2_dip12"]
+[ext_resource type="Script" path="res://scripts/kelas_pick.gd" id="3_1oi3g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0g56"]
+texture = ExtResource("1_uonlc")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaqjf"]
+bg_color = Color(0.0594, 0.34969, 0.66, 0.952941)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="Character Creation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pdy0p")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_a0g56")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -524.0
+offset_top = -305.0
+offset_right = 524.0
+offset_bottom = 305.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yaqjf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Avatar" type="ColorRect" parent="Panel2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Fields" type="VBoxContainer" parent="Panel2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 36
+
+[node name="Nama Lengkap" type="VBoxContainer" parent="Panel2/HBoxContainer/MarginContainer/Fields"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/HBoxContainer/MarginContainer/Fields/Nama Lengkap"]
+layout_mode = 2
+theme = ExtResource("2_dip12")
+theme_override_font_sizes/font_size = 48
+text = "Nama Lengkap"
+
+[node name="LineEdit" type="LineEdit" parent="Panel2/HBoxContainer/MarginContainer/Fields/Nama Lengkap"]
+layout_mode = 2
+theme = ExtResource("2_dip12")
+theme_override_font_sizes/font_size = 36
+placeholder_text = "Tulis nama lengkapmu"
+
+[node name="Nama Panggilan" type="VBoxContainer" parent="Panel2/HBoxContainer/MarginContainer/Fields"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/HBoxContainer/MarginContainer/Fields/Nama Panggilan"]
+layout_mode = 2
+theme = ExtResource("2_dip12")
+theme_override_font_sizes/font_size = 48
+text = "Nama Panggilan"
+
+[node name="LineEdit" type="LineEdit" parent="Panel2/HBoxContainer/MarginContainer/Fields/Nama Panggilan"]
+layout_mode = 2
+theme = ExtResource("2_dip12")
+theme_override_font_sizes/font_size = 36
+placeholder_text = "Tulis nama panggilanmu"
+max_length = 8
+
+[node name="Kelas" type="VBoxContainer" parent="Panel2/HBoxContainer/MarginContainer/Fields"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/HBoxContainer/MarginContainer/Fields/Kelas"]
+layout_mode = 2
+theme = ExtResource("2_dip12")
+theme_override_font_sizes/font_size = 48
+text = "Kelas
+"
+
+[node name="Kelas Pick" type="OptionButton" parent="Panel2/HBoxContainer/MarginContainer/Fields/Kelas"]
+layout_mode = 2
+theme = ExtResource("2_dip12")
+theme_override_font_sizes/font_size = 36
+selected = 0
+item_count = 1
+popup/item_0/text = "Pilih Kelas mu!"
+popup/item_0/disabled = true
+script = ExtResource("3_1oi3g")
+
+[node name="Submit" type="Button" parent="Panel2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("2_dip12")
+theme_override_font_sizes/font_size = 36
+text = "Mulai Bermain!"
+
+[connection signal="pressed" from="Panel2/HBoxContainer/MarginContainer/Submit" to="." method="_on_submit_pressed"]

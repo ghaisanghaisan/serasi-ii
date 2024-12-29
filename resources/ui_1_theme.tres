@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dibhwi1n0b2i3"]
 
-[ext_resource type="FontFile" uid="uid://dm3ch1vmt4ixr" path="res://assets/Fonts/font.ttf" id="1_440wf"]
+[ext_resource type="FontFile" uid="uid://2qeldosicygg" path="res://assets/Fonts/GrapeSoda.ttf" id="1_4ua76"]
 
 [resource]
-default_font = ExtResource("1_440wf")
+default_font = ExtResource("1_4ua76")

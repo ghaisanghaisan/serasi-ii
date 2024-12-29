@@ -1,27 +1,120 @@
-[gd_scene load_steps=3 format=3 uid="uid://cowenw02xk2sx"]
+[gd_scene load_steps=9 format=3 uid="uid://cowenw02xk2sx"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ee05l"]
+[ext_resource type="Texture2D" uid="uid://cmf0bmc8k88nf" path="res://assets/bg_test.png" id="1_iko1a"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="1_kjlkl"]
+[ext_resource type="FontFile" uid="uid://dtr4d735iiww0" path="res://assets/Fonts/SuperMario256.ttf" id="2_l0hxt"]
 
-[node name="Main Menu" type="Node2D"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4q60"]
+texture = ExtResource("1_iko1a")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlm3j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjxjk"]
+bg_color = Color(0.0627451, 0.356863, 0.662745, 1)
+border_width_top = 8
+border_color = Color(0.051, 0.27285, 0.51, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2klus"]
+bg_color = Color(0.0627451, 0.356863, 0.662745, 1)
+border_width_bottom = 8
+border_color = Color(0.0509804, 0.278431, 0.513726, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ee05l")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_p4q60")
 
-[node name="Play Button" type="Button" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -146.5
+offset_left = -211.0
 offset_top = -41.0
-offset_right = 146.5
-offset_bottom = 41.0
+offset_right = 211.0
+offset_bottom = 232.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="Play Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("1_kjlkl")
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mlm3j")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rjxjk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2klus")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rjxjk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2klus")
 text = "Play"
 
-[connection signal="pressed" from="CanvasLayer/Play Button" to="." method="_on_play_button_pressed"]
+[node name="Settings Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_kjlkl")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mlm3j")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rjxjk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2klus")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rjxjk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2klus")
+text = "Settings"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -383.0
+offset_right = 253.0
+offset_bottom = -127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_constants/shadow_offset_y = 12
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 32
+theme_override_fonts/normal_font = ExtResource("2_l0hxt")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "
+[wave amp=50 freq=2][center][color=#009CDA]S[/color][color=#FCD000]E[/color][color=#E71E07]R[/color][color=#42B132]A[/color][color=#FCD000]S[/color][color=#E71E07]I[/color][/center][/wave]"
+fit_content = true
+
+[connection signal="pressed" from="VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
