@@ -64,7 +64,7 @@ position = Vector2(-97, 52)
 collision_mask = 22
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(97, -52)
+offset = Vector2(0, -55)
 zoom = Vector2(2.75, 2.75)
 limit_left = -240
 position_smoothing_enabled = true
@@ -118,14 +118,14 @@ kalimat_pertanyaan = "Apa yang anda harapkan terkait fasilitas"
 unique_name_in_owner = true
 
 [node name="Pipe" parent="." instance=ExtResource("12_snqul")]
-position = Vector2(-56, 40)
+position = Vector2(392, 40)
 
 [node name="Pipe2" parent="." instance=ExtResource("12_snqul")]
-position = Vector2(-8, 40)
+position = Vector2(440, 40)
 is_traverseable = true
 
 [node name="Win" type="Area2D" parent="."]
-position = Vector2(672, 32)
+position = Vector2(224, 32)
 script = ExtResource("11_lj8i7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
@@ -133,4 +133,5 @@ shape = SubResource("RectangleShape2D_byigr")
 
 [node name="HUD" parent="." instance=ExtResource("13_h1r2n")]
 
+[connection signal="on_submit_or_win" from="Player" to="HUD" method="_on_player_on_submit_or_win"]
 [connection signal="body_entered" from="Win" to="Win" method="_on_body_entered"]

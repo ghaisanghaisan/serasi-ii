@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://osadctn5vqg5"]
+[gd_scene load_steps=4 format=3 uid="uid://osadctn5vqg5"]
 
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="1_3tjki"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_uow40"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erfif"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 200
+corner_radius_top_right = 200
+corner_radius_bottom_right = 200
+corner_radius_bottom_left = 200
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_uow40")
@@ -81,3 +88,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="EndFocus" type="Panel" parent="Control/EndFade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_erfif")

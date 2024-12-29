@@ -11,14 +11,16 @@ enum PlayerMode {
 }
 
 signal points_scored(points: int)
-signal on_submit_or_win 
+signal on_submit_or_win(player_pos: Vector2) 
 
 const POINTS_LABEL_SCENE = preload("res://scenes/points_label.tscn")
-const PIPE_ENTER_THRESHOLD = 10
+const PIPE_ENTER_THRESHOLD = 8
 
+@onready var camera_2d: Camera2D = $Camera2D
 @onready var animated_sprite_2d: PlayerAnimatedSprite = $AnimatedSprite2D as PlayerAnimatedSprite
 @onready var area_collision_check: CollisionShape2D = $Area2D/AreaCollisionCheck
 @onready var body_collision_check: CollisionShape2D = $BodyCollisionCheck
+@onready var label: Label = $Label
 
 
 var is_dead = false
@@ -41,6 +43,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export_group("")
 
 var player_mode = PlayerMode.SERASI
+
+func _ready() -> void:
+	label.text = SerasiForm.FormData["Panggilan"]
 
 func player_movement(delta: float):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -148,8 +153,17 @@ func win():
 	
 	var win_tween = get_tree().create_tween()
 	win_tween.tween_property(self, "position", position + Vector2(64, 0), 1)
-	win_tween.tween_callback(func (): animated_sprite_2d.play("win"); SerasiForm.submit(); on_submit_or_win.emit())
+	win_tween.tween_callback(win_callback)
 	
+	
+func win_callback():
+	animated_sprite_2d.play("win")
+	SerasiForm.submit()
+	on_submit_or_win.emit(position)
+	
+	var camera_tween = get_tree().create_tween()
+	camera_tween.tween_property(camera_2d, "drag_horizontal_enabled", false, .1)
+	camera_tween.tween_property(camera_2d, "zoom", Vector2(3.5,3.5), 2.5)	
 	
 func disable_movement():
 	can_move = false

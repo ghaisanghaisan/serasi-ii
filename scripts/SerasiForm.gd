@@ -1,9 +1,9 @@
 extends Node
 
 var FormData =  {
-  "Nama": null,
-  "Panggilan": null,
-  "Kelas": null,
+  "Nama": "",
+  "Panggilan": "",
+  "Kelas": "",
   "FasilitasA": null,
   "FasilitasB": null,
   "FasilitasC": null,

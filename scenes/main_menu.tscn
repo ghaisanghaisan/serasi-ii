@@ -37,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ee05l")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,6 +45,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_p4q60")
+
+[node name="Watermark" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+offset_right = 257.0
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="LinkButton" type="LinkButton" parent="Watermark"]
+layout_mode = 2
+theme = ExtResource("1_kjlkl")
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 36
+text = "@ghaisanghaisan"
+underline = 1
+uri = "https://github.com/ghaisanghaisan"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -118,3 +138,4 @@ text = "
 fit_content = true
 
 [connection signal="pressed" from="VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings Button" to="." method="_on_settings_button_pressed"]

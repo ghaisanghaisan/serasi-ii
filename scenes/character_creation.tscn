@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="2_dip12"]
 [ext_resource type="Script" path="res://scripts/kelas_pick.gd" id="3_1oi3g"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0g56"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqrn5"]
 texture = ExtResource("1_uonlc")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaqjf"]
@@ -24,14 +24,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pdy0p")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_a0g56")
+theme_override_styles/panel = SubResource("StyleBoxTexture_wqrn5")
+
+[node name="Watermark" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+offset_right = 257.0
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="LinkButton" type="LinkButton" parent="Watermark"]
+layout_mode = 2
+theme = ExtResource("2_dip12")
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 36
+text = "@ghaisanghaisan"
+underline = 1
+uri = "https://github.com/ghaisanghaisan"
 
 [node name="Panel2" type="Panel" parent="."]
 layout_mode = 1

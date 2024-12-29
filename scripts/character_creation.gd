@@ -6,7 +6,7 @@ extends Control
 
 
 func _on_submit_pressed() -> void:
-	if KelasOption.get_selected_id() == 0:
+	if NamaInput.text.length() == 0 || PanggilanInput.text.length() == 0 || KelasOption.get_selected_id() == 0:
 		print("Form Fault")
 		return;
 	SerasiForm.set_answer(SerasiForm.Questions.Nama, NamaInput.text)
@@ -15,4 +15,4 @@ func _on_submit_pressed() -> void:
 	SerasiForm.set_answer(SerasiForm.Questions.Kelas, kelas)
 	
 	
-	print(SerasiForm.FormData)
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
