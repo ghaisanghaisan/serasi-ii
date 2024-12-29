@@ -42,13 +42,14 @@ var url = "https://localhost:8080/Aspirasi/post"
 func submit():
 	var body = JSON.stringify(FormData)
 	var headers = ["Content-Type: application/json"]
-	$HTTPRequest.request(url, headers, HTTPClient.METHOD_POST, body)
+	# $HTTPRequest.request(url, headers, HTTPClient.METHOD_POST, body)
+	
+	print(FormData)
 
 func set_answer(question: Questions, answer: String):
 	var q = Questions.keys()[question]
 	FormData[q] = answer
 	
-	print(FormData)
 	
 func set_multi_choice(question: Questions, answer: MultiChoice): 
 	var q = Questions.keys()[question]
@@ -56,4 +57,3 @@ func set_multi_choice(question: Questions, answer: MultiChoice):
 	
 	FormData[q] = a;
 	
-	print(FormData)

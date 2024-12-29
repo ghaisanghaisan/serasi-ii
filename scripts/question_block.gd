@@ -1,5 +1,7 @@
 extends Block 
 
+class_name QuestionBlock
+
 @export var question_ui: Node;
 
 

@@ -11,8 +11,11 @@ enum PlayerMode {
 }
 
 signal points_scored(points: int)
+signal on_submit_or_win 
 
 const POINTS_LABEL_SCENE = preload("res://scenes/points_label.tscn")
+const PIPE_ENTER_THRESHOLD = 10
+
 @onready var animated_sprite_2d: PlayerAnimatedSprite = $AnimatedSprite2D as PlayerAnimatedSprite
 @onready var area_collision_check: CollisionShape2D = $Area2D/AreaCollisionCheck
 @onready var body_collision_check: CollisionShape2D = $BodyCollisionCheck
@@ -20,6 +23,7 @@ const POINTS_LABEL_SCENE = preload("res://scenes/points_label.tscn")
 
 var is_dead = false
 var can_move = true
+var animating = false
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -62,7 +66,9 @@ func _physics_process(delta: float) -> void:
 		player_movement(delta)
 	else:
 		velocity.x = 0;
-		animated_sprite_2d.play("serasi_idle")
+		
+		if !animating:
+			animated_sprite_2d.play("serasi_idle")
 
 	var collision = get_last_slide_collision()
 	
@@ -76,7 +82,25 @@ func handle_movement_collision(collision: KinematicCollision2D):
 		var col_angle = rad_to_deg(collision.get_angle())
 		if roundf(col_angle) == 180:
 			collision.get_collider().bump()
-
+			
+	if collision.get_collider() is Pipe:
+		if collision.get_collider().is_traverseable:
+			var col_angle = rad_to_deg(collision.get_angle())
+			if (roundf(col_angle) == 0 && Input.is_action_just_pressed("down") && absf(collision.get_collider().position.x - position.x) < PIPE_ENTER_THRESHOLD):
+				handle_pipe_collision()
+				
+func handle_pipe_collision():
+	var enter_tween = get_tree().create_tween()
+	
+	set_collision_layer_value(1, false)
+	set_physics_process(false)
+	
+	enter_tween.set_ease(Tween.EASE_OUT)
+	enter_tween.tween_property(self, "position", position + Vector2(0, 48), .75)
+	enter_tween.tween_callback(func ():  get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	
+	 
+			
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Enemy:
 		handle_enemy_collision(area)
@@ -116,6 +140,15 @@ func die():
 	death_tween.tween_property(self, "position", position + Vector2(0, -48), .75).set_ease(Tween.EASE_OUT)
 	death_tween.chain().tween_property(self, "position", position + Vector2(0, 64), .25)
 	death_tween.tween_callback(func (): get_tree().reload_current_scene())
+	
+func win():
+	can_move = false;
+	animated_sprite_2d.play("serasi_run")
+	animating = true;
+	
+	var win_tween = get_tree().create_tween()
+	win_tween.tween_property(self, "position", position + Vector2(64, 0), 1)
+	win_tween.tween_callback(func (): animated_sprite_2d.play("win"); SerasiForm.submit(); on_submit_or_win.emit())
 	
 	
 func disable_movement():

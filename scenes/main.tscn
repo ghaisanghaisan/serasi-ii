@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://swereywol7bd"]
+[gd_scene load_steps=23 format=3 uid="uid://swereywol7bd"]
 
 [ext_resource type="Texture2D" uid="uid://co3bdq1m4vg4f" path="res://assets/Sprites/Brick.png" id="1_46237"]
 [ext_resource type="PackedScene" uid="uid://d22ldn7cuak65" path="res://scenes/player.tscn" id="1_bev5m"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://o78vwx7cq1xh" path="res://scenes/multi_choice_block.tscn" id="8_w7djp"]
 [ext_resource type="PackedScene" uid="uid://dyaf5m4xwmujd" path="res://scenes/question_block.tscn" id="9_stusg"]
 [ext_resource type="PackedScene" uid="uid://bwmx0j72n6cs4" path="res://scenes/question.tscn" id="10_1qmpa"]
+[ext_resource type="Script" path="res://scenes/win.gd" id="11_lj8i7"]
+[ext_resource type="PackedScene" uid="uid://bq6a0vfr6qkss" path="res://scenes/pipe.tscn" id="12_snqul"]
+[ext_resource type="PackedScene" uid="uid://osadctn5vqg5" path="res://scenes/hud.tscn" id="13_h1r2n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_22h3m"]
 texture = ExtResource("1_46237")
@@ -50,6 +53,9 @@ sources/4 = SubResource("TileSetAtlasSource_8cxqj")
 normal = Vector2(1, 0)
 distance = -152.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byigr"]
+size = Vector2(20, 72)
+
 [node name="main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_bev5m")]
@@ -81,7 +87,7 @@ physics_material_override = SubResource("PhysicsMaterial_3tl4f")
 shape = SubResource("WorldBoundaryShape2D_6jl1a")
 
 [node name="QuestionBlock" parent="." node_paths=PackedStringArray("question_ui") instance=ExtResource("9_stusg")]
-position = Vector2(-40, -8)
+position = Vector2(-24, -128)
 question_ui = NodePath("../Question")
 
 [node name="MultiChoiceQuestion" type="Node" parent="."]
@@ -105,15 +111,26 @@ choice = 3
 
 [node name="Question" parent="." instance=ExtResource("10_1qmpa")]
 visible = false
-kalimat_pertanyaan = "w"
-
-[node name="Question2" parent="." instance=ExtResource("10_1qmpa")]
-visible = false
-kalimat_pertanyaan = "awefwaef"
-
-[node name="Question3" parent="." instance=ExtResource("10_1qmpa")]
-visible = false
-kalimat_pertanyaan = "bbbbbbbb"
+question = 3
+kalimat_pertanyaan = "Apa yang anda harapkan terkait fasilitas"
 
 [node name="HTTPForm" type="HTTPRequest" parent="."]
 unique_name_in_owner = true
+
+[node name="Pipe" parent="." instance=ExtResource("12_snqul")]
+position = Vector2(-56, 40)
+
+[node name="Pipe2" parent="." instance=ExtResource("12_snqul")]
+position = Vector2(-8, 40)
+is_traverseable = true
+
+[node name="Win" type="Area2D" parent="."]
+position = Vector2(672, 32)
+script = ExtResource("11_lj8i7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
+shape = SubResource("RectangleShape2D_byigr")
+
+[node name="HUD" parent="." instance=ExtResource("13_h1r2n")]
+
+[connection signal="body_entered" from="Win" to="Win" method="_on_body_entered"]

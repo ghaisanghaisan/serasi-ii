@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://osadctn5vqg5"]
+
+[ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="1_3tjki"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Profile" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 128.0
+
+[node name="BG" type="ColorRect" parent="Control/Profile"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Profile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Avatar" type="ColorRect" parent="Control/Profile/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(1, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Profile/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Nama" type="Label" parent="Control/Profile/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_3tjki")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "DANISH GHAISAN"
+
+[node name="Kelas" type="Label" parent="Control/Profile/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_3tjki")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "XII-B"
+
+[node name="Objectives" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -512.0
+offset_bottom = 256.0
+grow_horizontal = 0
+
+[node name="BG" type="ColorRect" parent="Control/Objectives"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndFade" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

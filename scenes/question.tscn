@@ -70,6 +70,7 @@ theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Tulis pendapat mu disini!"
+wrap_mode = 1
 
 [node name="Button" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2

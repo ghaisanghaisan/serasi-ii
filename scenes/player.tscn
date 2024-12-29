@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d22ldn7cuak65"]
+[gd_scene load_steps=14 format=3 uid="uid://d22ldn7cuak65"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5cl8p"]
 [ext_resource type="Texture2D" uid="uid://dn8wqcgftmaau" path="res://assets/die.png" id="2_60ur5"]
 [ext_resource type="Texture2D" uid="uid://cm0y0gruhc50g" path="res://assets/mario.png" id="2_p48rc"]
 [ext_resource type="Script" path="res://scripts/player_animated_sprite.gd" id="3_3lyjm"]
 [ext_resource type="Shape2D" uid="uid://c0h8hpyksu1ie" path="res://resources/Collision Shapes/serasi_mario_collision_check.tres" id="4_oy28f"]
+[ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="6_ywgfp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iyv5y"]
 atlas = ExtResource("2_p48rc")
@@ -25,6 +26,10 @@ region = Rect2(240, 0, 40, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vikm3"]
 atlas = ExtResource("2_p48rc")
 region = Rect2(240, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgu06"]
+atlas = ExtResource("2_p48rc")
+region = Rect2(200, 40, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyf8u"]
 animations = [{
@@ -70,6 +75,14 @@ animations = [{
 "loop": true,
 "name": &"serasi_slide",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgu06")
+}],
+"loop": true,
+"name": &"win",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -78,7 +91,7 @@ script = ExtResource("1_5cl8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lyf8u")
-animation = &"die"
+animation = &"serasi_run"
 script = ExtResource("3_3lyjm")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -91,5 +104,19 @@ shape = ExtResource("4_oy28f")
 [node name="BodyCollisionCheck" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)
 shape = ExtResource("4_oy28f")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = -32.0
+offset_right = 26.0
+offset_bottom = -9.0
+grow_horizontal = 2
+theme = ExtResource("6_ywgfp")
+theme_override_font_sizes/font_size = 12
+text = "Danish"
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
