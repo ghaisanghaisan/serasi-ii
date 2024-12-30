@@ -13,6 +13,12 @@ var is_ready = 0
 		if(Engine.is_editor_hint() || is_ready):
 			_on_height_set()
 			
+@export var is_horizontal = false:
+	set(new_horizontal):
+		is_horizontal = new_horizontal
+		if(Engine.is_editor_hint() || is_ready):
+			_on_horizontal_set()
+
 @export var is_traverseable = false
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -21,6 +27,13 @@ var is_ready = 0
 func _ready() -> void:
 	is_ready = true
 	_on_height_set()
+	_on_horizontal_set()
+
+func _on_horizontal_set():
+	if is_horizontal:
+		rotation_degrees = -90
+	else:
+		rotation_degrees = 0
 
 func _on_height_set():
 	var region_rect = Rect2(pipe_body_sprite.region_rect)

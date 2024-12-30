@@ -83,26 +83,32 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func handle_movement_collision(collision: KinematicCollision2D):
-	if collision.get_collider() is Block:
+	var other_col = collision.get_collider()
+	if other_col is Block:
 		var col_angle = rad_to_deg(collision.get_angle())
 		if roundf(col_angle) == 180:
-			collision.get_collider().bump()
+			other_col.bump()
 			
-	if collision.get_collider() is Pipe:
-		if collision.get_collider().is_traverseable:
+	if other_col is Pipe:
+		if other_col.is_traverseable:
 			var col_angle = rad_to_deg(collision.get_angle())
-			if (roundf(col_angle) == 0 && Input.is_action_just_pressed("down") && absf(collision.get_collider().position.x - position.x) < PIPE_ENTER_THRESHOLD):
-				handle_pipe_collision()
+			var is_want_enter = Input.is_action_pressed("right") if other_col.is_horizontal else Input.is_action_just_pressed("down")
+			var is_good_position = roundf(col_angle) == 90 if other_col.is_horizontal else roundf(col_angle) == 0
+			var is_within_threshold = absf(collision.get_collider().position.x - position.x) < PIPE_ENTER_THRESHOLD
+			if (is_good_position && is_want_enter && (other_col.is_horizontal || is_within_threshold)):
+				handle_pipe_collision(other_col.is_horizontal)
 				
-func handle_pipe_collision():
+func handle_pipe_collision(horizontal: bool):
 	var enter_tween = get_tree().create_tween()
 	
 	set_collision_layer_value(1, false)
 	set_physics_process(false)
 	
+	var pos_offset =  Vector2(48, 0) if horizontal else Vector2(0, 48)
+	
 	enter_tween.set_ease(Tween.EASE_OUT)
-	enter_tween.tween_property(self, "position", position + Vector2(0, 48), .75)
-	enter_tween.tween_callback(func ():  get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	enter_tween.tween_property(self, "position", position + pos_offset, .75)
+	enter_tween.tween_callback(func ():  get_tree().reload_current_scene())
 	
 	 
 			
@@ -141,9 +147,10 @@ func die():
 	set_physics_process(false)
 	
 	var death_tween = get_tree().create_tween()
-	
-	death_tween.tween_property(self, "position", position + Vector2(0, -48), .75).set_ease(Tween.EASE_OUT)
-	death_tween.chain().tween_property(self, "position", position + Vector2(0, 64), .25)
+	death_tween.set_ease(Tween.EASE_OUT)
+	death_tween.tween_interval(.3)
+	death_tween.tween_property(self, "position", position + Vector2(0, -48), .4)
+	death_tween.chain().tween_property(self, "position", position + Vector2(0, 64), .3)
 	death_tween.tween_callback(func (): get_tree().reload_current_scene())
 	
 func win():
@@ -170,3 +177,8 @@ func disable_movement():
 
 func enable_movement():
 	can_move = true
+
+
+func _on_death_zones_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		die()

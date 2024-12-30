@@ -1,9 +1,9 @@
 extends Node
 
 var FormData =  {
-  "Nama": "",
-  "Panggilan": "",
-  "Kelas": "",
+  "Nama": "Danish",
+  "Panggilan": "Ghaisan",
+  "Kelas": "XA",
   "FasilitasA": null,
   "FasilitasB": null,
   "FasilitasC": null,
@@ -55,10 +55,10 @@ var url = "https://localhost:8080/Aspirasi/post"
 
 func submit():
 	var body = JSON.stringify(FormData)
-	var headers = ["Content-Type: application/json"]
+	#var headers = ["Content-Type: application/json"]
 	# $HTTPRequest.request(url, headers, HTTPClient.METHOD_POST, body)
 	
-	print(FormData)
+	print(body)
 
 func set_answer(question: Questions, answer: String):
 	var q = Questions.keys()[question]

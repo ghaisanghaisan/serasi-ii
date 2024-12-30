@@ -111,7 +111,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_rjxjk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2klus")
 text = "Settings"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="SERASI" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
