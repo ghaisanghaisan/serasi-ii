@@ -53,10 +53,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -386.0
-offset_top = -192.0
-offset_right = 386.0
-offset_bottom = 192.0
+offset_left = -384.0
+offset_top = -320.0
+offset_right = 388.0
+offset_bottom = 272.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -68,11 +68,13 @@ theme_override_constants/shadow_outline_size = 32
 theme_override_fonts/normal_font = ExtResource("3_6kpj5")
 theme_override_font_sizes/normal_font_size = 128
 bbcode_enabled = true
-text = "[wave amp=50 freq=2][center][color=#009CDA]t[/color][color=#FCD000]h[/color][color=#E71E07]a[/color][color=#42B132]n[/color][color=#FCD000]k[/color][color=#E71E07]s[/color][color=#009CDA] [/color][color=#FCD000]f[/color][color=#E71E07]o[/color][color=#42B132]r[/color][color=#FCD000] [/color][color=#E71E07]p[/color][color=#009CDA]l[/color][color=#FCD000]a[/color][color=#E71E07]y[/color][color=#42B132]i[/color][color=#FCD000]n[/color][color=#E71E07]g[/color][/center][/wave]
+text = "
+[wave amp=50 freq=2][center][color=#009CDA]t[/color][color=#FCD000]h[/color][color=#E71E07]a[/color][color=#42B132]n[/color][color=#FCD000]k[/color][color=#E71E07]s[/color][color=#009CDA] [/color][color=#FCD000]f[/color][color=#E71E07]o[/color][color=#42B132]r[/color][color=#FCD000] [/color][color=#E71E07]p[/color][color=#009CDA]l[/color][color=#FCD000]a[/color][color=#E71E07]y[/color][color=#42B132]i[/color][color=#FCD000]n[/color][color=#E71E07]g[/color][/center][/wave]
 "
 fit_content = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

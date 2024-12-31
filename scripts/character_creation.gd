@@ -3,6 +3,7 @@ extends Control
 @onready var NamaInput: LineEdit = $"Panel2/HBoxContainer/MarginContainer/Fields/Nama Lengkap/LineEdit"
 @onready var PanggilanInput: LineEdit = $"Panel2/HBoxContainer/MarginContainer/Fields/Nama Panggilan/LineEdit"
 @onready var KelasOption: OptionButton = $"Panel2/HBoxContainer/MarginContainer/Fields/Kelas/Kelas Pick"
+@onready var scene_transition_animation: AnimationPlayer = $SceneTransitionAnimation/AnimationPlayer
 
 
 func _on_submit_pressed() -> void:
@@ -15,4 +16,6 @@ func _on_submit_pressed() -> void:
 	SerasiForm.set_answer(SerasiForm.Questions.Kelas, kelas)
 	
 	
-	get_tree().change_scene_to_file("res://scenes/level_intro.tscn")
+	scene_transition_animation.play("Fade_out")
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://scenes/levels/level_intro.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://swereywol7bd"]
+[gd_scene load_steps=22 format=3 uid="uid://swereywol7bd"]
 
 [ext_resource type="Texture2D" uid="uid://co3bdq1m4vg4f" path="res://assets/Sprites/Brick.png" id="1_46237"]
 [ext_resource type="PackedScene" uid="uid://d22ldn7cuak65" path="res://scenes/player.tscn" id="1_bev5m"]
@@ -6,8 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dtkrgfs1x5qrr" path="res://assets/Sprites/UndergroundBrick.png" id="3_h4sxl"]
 [ext_resource type="Texture2D" uid="uid://bh2i2pbd72n30" path="res://assets/Sprites/GroundBlock.png" id="4_flg85"]
 [ext_resource type="Texture2D" uid="uid://8as4lix1a8pr" path="res://assets/Sprites/HardBlock.png" id="5_yuvsx"]
-[ext_resource type="Script" path="res://scripts/multi_choice_question.gd" id="7_ent7s"]
-[ext_resource type="PackedScene" uid="uid://o78vwx7cq1xh" path="res://scenes/multi_choice_block.tscn" id="8_w7djp"]
+[ext_resource type="PackedScene" uid="uid://jvj6sbpouj7d" path="res://scenes/multi_choice_question.tscn" id="8_n82dk"]
 [ext_resource type="PackedScene" uid="uid://dyaf5m4xwmujd" path="res://scenes/question_block.tscn" id="9_stusg"]
 [ext_resource type="PackedScene" uid="uid://bwmx0j72n6cs4" path="res://scenes/question.tscn" id="10_1qmpa"]
 [ext_resource type="Script" path="res://scripts/win.gd" id="11_lj8i7"]
@@ -90,24 +89,7 @@ shape = SubResource("WorldBoundaryShape2D_6jl1a")
 position = Vector2(-24, -128)
 question_ui = NodePath("../Question")
 
-[node name="MultiChoiceQuestion" type="Node" parent="."]
-script = ExtResource("7_ent7s")
-question = 2
-
-[node name="MultiChoiceBlock1" parent="MultiChoiceQuestion" instance=ExtResource("8_w7djp")]
-position = Vector2(48, -8)
-
-[node name="MultiChoiceBlock2" parent="MultiChoiceQuestion" instance=ExtResource("8_w7djp")]
-position = Vector2(136, -8)
-choice = 1
-
-[node name="MultiChoiceBlock3" parent="MultiChoiceQuestion" instance=ExtResource("8_w7djp")]
-position = Vector2(224, -8)
-choice = 2
-
-[node name="MultiChoiceBlock4" parent="MultiChoiceQuestion" instance=ExtResource("8_w7djp")]
-position = Vector2(312, -8)
-choice = 3
+[node name="MultiChoiceQuestion" parent="." instance=ExtResource("8_n82dk")]
 
 [node name="Question" parent="." instance=ExtResource("10_1qmpa")]
 visible = false

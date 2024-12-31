@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkl3tuvaa4upn"]
+[gd_scene load_steps=8 format=3 uid="uid://dkl3tuvaa4upn"]
 
 [ext_resource type="Script" path="res://scripts/character_creation.gd" id="1_pdy0p"]
 [ext_resource type="Texture2D" uid="uid://cmf0bmc8k88nf" path="res://assets/bg_test.png" id="1_uonlc"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="2_dip12"]
 [ext_resource type="Script" path="res://scripts/kelas_pick.gd" id="3_1oi3g"]
+[ext_resource type="PackedScene" uid="uid://chxju6pnvq85e" path="res://scenes/scene_transition_animation.tscn" id="5_uum3a"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqrn5"]
 texture = ExtResource("1_uonlc")
@@ -150,5 +151,7 @@ size_flags_vertical = 8
 theme = ExtResource("2_dip12")
 theme_override_font_sizes/font_size = 36
 text = "Mulai Bermain!"
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("5_uum3a")]
 
 [connection signal="pressed" from="Panel2/HBoxContainer/MarginContainer/Submit" to="." method="_on_submit_pressed"]

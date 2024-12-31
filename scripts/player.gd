@@ -96,9 +96,9 @@ func handle_movement_collision(collision: KinematicCollision2D):
 			var is_good_position = roundf(col_angle) == 90 if other_col.is_horizontal else roundf(col_angle) == 0
 			var is_within_threshold = absf(collision.get_collider().position.x - position.x) < PIPE_ENTER_THRESHOLD
 			if (is_good_position && is_want_enter && (other_col.is_horizontal || is_within_threshold)):
-				handle_pipe_collision(other_col.is_horizontal)
+				handle_pipe_collision(other_col.is_horizontal, other_col.to_scene)
 				
-func handle_pipe_collision(horizontal: bool):
+func handle_pipe_collision(horizontal: bool, to_scene: String):
 	var enter_tween = get_tree().create_tween()
 	
 	set_collision_layer_value(1, false)
@@ -108,7 +108,7 @@ func handle_pipe_collision(horizontal: bool):
 	
 	enter_tween.set_ease(Tween.EASE_OUT)
 	enter_tween.tween_property(self, "position", position + pos_offset, .75)
-	enter_tween.tween_callback(func ():  get_tree().reload_current_scene())
+	enter_tween.tween_callback(func ():  get_tree().change_scene_to_file(to_scene))
 	
 	 
 			

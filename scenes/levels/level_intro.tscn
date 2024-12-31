@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://d0bxebx0gxbpv"]
+[gd_scene load_steps=26 format=3 uid="uid://ccopth37esdvc"]
 
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_1qpdv"]
 [ext_resource type="PackedScene" uid="uid://d22ldn7cuak65" path="res://scenes/player.tscn" id="1_4ayib"]
 [ext_resource type="Texture2D" uid="uid://co3bdq1m4vg4f" path="res://assets/Sprites/Brick.png" id="2_b1hcm"]
 [ext_resource type="Texture2D" uid="uid://dbhkvad8kmca" path="res://assets/Sprites/UndergroundBlock.png" id="3_lp3j5"]
@@ -14,6 +15,7 @@
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="11_3m5q3"]
 [ext_resource type="FontFile" uid="uid://dtr4d735iiww0" path="res://assets/Fonts/SuperMario256.ttf" id="11_r5kdb"]
 [ext_resource type="PackedScene" uid="uid://osadctn5vqg5" path="res://scenes/hud.tscn" id="12_flk4d"]
+[ext_resource type="PackedScene" uid="uid://chxju6pnvq85e" path="res://scenes/scene_transition_animation.tscn" id="16_ws55l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ar5e8"]
 texture = ExtResource("2_b1hcm")
@@ -58,6 +60,7 @@ distance = -152.0
 distance = -128.0
 
 [node name="level_intro" type="Node2D"]
+script = ExtResource("1_1qpdv")
 
 [node name="Player" parent="." instance=ExtResource("1_4ayib")]
 unique_name_in_owner = true
@@ -88,47 +91,50 @@ physics_material_override = SubResource("PhysicsMaterial_xc0ub")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_y50h6")
 
-[node name="Node" type="Node" parent="."]
+[node name="Bricks" type="Node" parent="."]
 
-[node name="Brick" parent="Node" instance=ExtResource("7_sdabh")]
+[node name="Brick" parent="Bricks" instance=ExtResource("7_sdabh")]
 position = Vector2(56, 8)
 
-[node name="Brick2" parent="Node" instance=ExtResource("7_sdabh")]
+[node name="Brick2" parent="Bricks" instance=ExtResource("7_sdabh")]
 position = Vector2(72, 8)
 
-[node name="Brick3" parent="Node" instance=ExtResource("7_sdabh")]
+[node name="Brick3" parent="Bricks" instance=ExtResource("7_sdabh")]
 position = Vector2(88, 8)
 
-[node name="Brick4" parent="Node" instance=ExtResource("7_sdabh")]
+[node name="Brick4" parent="Bricks" instance=ExtResource("7_sdabh")]
 position = Vector2(104, 8)
 
-[node name="Brick5" parent="Node" instance=ExtResource("7_sdabh")]
+[node name="Brick5" parent="Bricks" instance=ExtResource("7_sdabh")]
 position = Vector2(120, 8)
 
-[node name="Pipe" parent="." instance=ExtResource("9_xrp84")]
+[node name="Pipes" type="Node" parent="."]
+
+[node name="Pipe" parent="Pipes" instance=ExtResource("9_xrp84")]
 position = Vector2(472, 24)
 height = 48
 
-[node name="Pipe2" parent="." instance=ExtResource("9_xrp84")]
+[node name="Pipe2" parent="Pipes" instance=ExtResource("9_xrp84")]
 position = Vector2(808, 8)
 height = 64
 is_traverseable = true
+to_scene = "res://scenes/levels/level_intro.tscn"
 
-[node name="Pipe3" parent="." instance=ExtResource("9_xrp84")]
+[node name="Pipe3" parent="Pipes" instance=ExtResource("9_xrp84")]
 position = Vector2(1288, 48)
 rotation = -1.5708
 is_horizontal = true
 is_traverseable = true
+to_scene = "res://scenes/levels/level_fasilitas.tscn"
 
-[node name="PipeConnection" type="Sprite2D" parent="Pipe3"]
+[node name="PipeConnection" type="Sprite2D" parent="Pipes/Pipe3"]
 position = Vector2(8, 24)
 rotation = 1.5708
 texture = ExtResource("9_v5qot")
 
-[node name="Pipe4" parent="." instance=ExtResource("9_xrp84")]
+[node name="Pipe4" parent="Pipes" instance=ExtResource("9_xrp84")]
 position = Vector2(1328, -56)
 height = 100
-is_traverseable = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -253,7 +259,7 @@ theme = ExtResource("11_3m5q3")
 theme_override_constants/line_separation = 3
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[wave amp=20 freq=2][center]Mari mulai petualanganmu dalam memberi aspirasi![/center]"
+text = "[wave amp=20 freq=2][center]Mari mulai petualangan memberi aspirasimu![/center]"
 fit_content = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="ParallaxBackground/Text/Control"]
@@ -290,16 +296,20 @@ shape = SubResource("WorldBoundaryShape2D_eno21")
 
 [node name="HUD" parent="." instance=ExtResource("12_flk4d")]
 
-[node name="Goomba" parent="." instance=ExtResource("8_j5jdo")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Goomba" parent="Enemies" instance=ExtResource("8_j5jdo")]
 position = Vector2(760, 56)
 
-[node name="Goomba2" parent="." instance=ExtResource("8_j5jdo")]
+[node name="Goomba2" parent="Enemies" instance=ExtResource("8_j5jdo")]
 position = Vector2(552, 56)
 
-[node name="Goomba4" parent="." instance=ExtResource("8_j5jdo")]
+[node name="Goomba4" parent="Enemies" instance=ExtResource("8_j5jdo")]
 position = Vector2(240, 56)
 
-[node name="Goomba3" parent="." instance=ExtResource("8_j5jdo")]
+[node name="Goomba3" parent="Enemies" instance=ExtResource("8_j5jdo")]
 position = Vector2(672, 56)
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("16_ws55l")]
 
 [connection signal="body_entered" from="DeathZones" to="Player" method="_on_death_zones_body_entered"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://jvj6sbpouj7d"]
+
+[ext_resource type="Script" path="res://scripts/multi_choice_question.gd" id="1_xt4w1"]
+[ext_resource type="PackedScene" uid="uid://o78vwx7cq1xh" path="res://scenes/multi_choice_block.tscn" id="2_qa1fs"]
+
+[node name="MultiChoiceQuestion" type="Node2D"]
+script = ExtResource("1_xt4w1")
+question = 2
+
+[node name="MultiChoiceBlock1" parent="." instance=ExtResource("2_qa1fs")]
+position = Vector2(8, 0)
+
+[node name="MultiChoiceBlock2" parent="." instance=ExtResource("2_qa1fs")]
+position = Vector2(104, 0)
+choice = 1
+
+[node name="MultiChoiceBlock3" parent="." instance=ExtResource("2_qa1fs")]
+position = Vector2(200, 0)
+choice = 2
+
+[node name="MultiChoiceBlock4" parent="." instance=ExtResource("2_qa1fs")]
+position = Vector2(296, 0)
+choice = 3

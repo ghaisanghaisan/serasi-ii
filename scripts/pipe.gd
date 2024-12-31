@@ -20,6 +20,7 @@ var is_ready = 0
 			_on_horizontal_set()
 
 @export var is_traverseable = false
+@export var to_scene = ""
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var pipe_body_sprite: Sprite2D = $PipeBodySprite

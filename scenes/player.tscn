@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d22ldn7cuak65"]
+[gd_scene load_steps=15 format=3 uid="uid://d22ldn7cuak65"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5cl8p"]
 [ext_resource type="Texture2D" uid="uid://dn8wqcgftmaau" path="res://assets/die.png" id="2_60ur5"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://scripts/player_animated_sprite.gd" id="3_3lyjm"]
 [ext_resource type="Shape2D" uid="uid://c0h8hpyksu1ie" path="res://resources/Collision Shapes/serasi_mario_collision_check.tres" id="4_oy28f"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="6_ywgfp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfnu2"]
+atlas = ExtResource("2_p48rc")
+region = Rect2(160, 35, 40, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iyv5y"]
 atlas = ExtResource("2_p48rc")
@@ -39,6 +43,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfnu2")
+}],
+"loop": true,
+"name": &"serasi_duck",
 "speed": 5.0
 }, {
 "frames": [{
@@ -91,8 +103,7 @@ script = ExtResource("1_5cl8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lyf8u")
-animation = &"serasi_idle"
-frame_progress = 0.138244
+animation = &"serasi_duck"
 script = ExtResource("3_3lyjm")
 
 [node name="Area2D" type="Area2D" parent="."]
