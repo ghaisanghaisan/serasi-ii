@@ -51,13 +51,11 @@ enum Questions {
 	EkskulB
 }
 
-var url = "https://localhost:8080/Aspirasi/post"
+var url = "https://delusi.my.id/Aspirasi/post"
 
 func submit():
 	var body = JSON.stringify(FormData)
-	#var headers = ["Content-Type: application/json"]
-	# $HTTPRequest.request(url, headers, HTTPClient.METHOD_POST, body)
-	
+	var headers = ["Content-Type: application/json"]
 	print(body)
 
 func set_answer(question: Questions, answer: String):

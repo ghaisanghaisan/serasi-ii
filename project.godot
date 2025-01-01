@@ -14,7 +14,7 @@ config/name="SERASI II"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.952941, 0.952941, 0.952941, 1)
-boot_splash/image="res://assets/wtf.png"
+boot_splash/image="res://assets/Gmedia.png"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=5000
 
@@ -73,3 +73,4 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.137255, 0.137255, 0.137255, 1)

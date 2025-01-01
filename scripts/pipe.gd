@@ -5,7 +5,7 @@ extends StaticBody2D
 class_name Pipe
 
 const TOP_PIPE_HEIGHT = 16
-var is_ready = 0
+var is_ready = false
 
 @export var height = 32:
 	set(new_height):
@@ -33,8 +33,6 @@ func _ready() -> void:
 func _on_horizontal_set():
 	if is_horizontal:
 		rotation_degrees = -90
-	else:
-		rotation_degrees = 0
 
 func _on_height_set():
 	var region_rect = Rect2(pipe_body_sprite.region_rect)

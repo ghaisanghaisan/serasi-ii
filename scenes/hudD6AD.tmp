@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=3 uid="uid://osadctn5vqg5"]
+
+[ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="1_3tjki"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_uow40"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_uow40")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Profile" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 128.0
+
+[node name="BG" type="ColorRect" parent="Control/Profile"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Profile" type="MarginContainer" parent="Control/Profile"]
+layout_mode = 1
+offset_right = 257.0
+offset_bottom = 76.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Profile/Profile"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Nama" type="Label" parent="Control/Profile/Profile/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_3tjki")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "DANISH GHAISAN"
+
+[node name="Kelas" type="Label" parent="Control/Profile/Profile/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_3tjki")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "XII-B"
+
+[node name="Score" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_bottom = 56.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Score"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 20
+
+[node name="Label" type="Label" parent="Control/Score/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_3tjki")
+theme_override_font_sizes/font_size = 36
+text = "Skor: 0000"
+horizontal_alignment = 2
+
+[node name="EndFade" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)

@@ -11,6 +11,7 @@ enum PlayerMode {
 }
 
 signal points_scored(points: int)
+signal moving_levels
 signal on_submit_or_win(player_pos: Vector2) 
 
 const POINTS_LABEL_SCENE = preload("res://scenes/points_label.tscn")
@@ -101,6 +102,8 @@ func handle_movement_collision(collision: KinematicCollision2D):
 func handle_pipe_collision(horizontal: bool, to_scene: String):
 	var enter_tween = get_tree().create_tween()
 	
+	moving_levels.emit()
+	
 	set_collision_layer_value(1, false)
 	set_physics_process(false)
 	
@@ -156,6 +159,7 @@ func die():
 func win():
 	can_move = false;
 	animated_sprite_2d.play("serasi_run")
+	position.y = 52
 	animating = true;
 	
 	var win_tween = get_tree().create_tween()

@@ -103,7 +103,8 @@ script = ExtResource("1_5cl8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lyf8u")
-animation = &"serasi_duck"
+animation = &"serasi_run"
+frame_progress = 0.796579
 script = ExtResource("3_3lyjm")
 
 [node name="Area2D" type="Area2D" parent="."]

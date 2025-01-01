@@ -60,7 +60,7 @@ distance = -152.0
 distance = -128.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6moc"]
-size = Vector2(20, 72)
+size = Vector2(20, 148)
 
 [node name="level_fasilitas" type="Node2D"]
 script = ExtResource("1_7eiaf")
@@ -79,6 +79,7 @@ collision_mask = 22
 position = Vector2(1, -28)
 offset = Vector2(0, -55)
 zoom = Vector2(2.75, 2.75)
+process_callback = 0
 limit_left = -240
 limit_right = 1360
 position_smoothing_enabled = true
@@ -117,61 +118,23 @@ region_rect = Rect2(0, 0, 510, 1000)
 
 [node name="Text" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="FasilitasA" type="Control" parent="ParallaxBackground/Text"]
+[node name="EkskulA" type="Control" parent="ParallaxBackground/Text"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ParallaxBackground/Text/FasilitasA"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ParallaxBackground/Text/EkskulA"]
 layout_mode = 0
-offset_left = 344.0
-offset_top = -152.0
-offset_right = 648.0
-offset_bottom = -88.0
+offset_left = 48.0
+offset_top = -144.0
+offset_right = 352.0
+offset_bottom = -80.0
 theme = ExtResource("9_wyqx2")
 theme_override_constants/line_separation = 3
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[wave amp=20 freq=2][center]Bagaimana menurut mu kondisi fasilitas di sekolah sekarang?[/center]"
-fit_content = true
-
-[node name="FasilitasB" type="Control" parent="ParallaxBackground/Text"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ParallaxBackground/Text/FasilitasB"]
-layout_mode = 0
-offset_left = 856.0
-offset_top = -88.0
-offset_right = 1160.0
-offset_bottom = -24.0
-theme = ExtResource("9_wyqx2")
-theme_override_constants/line_separation = 3
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "[wave amp=20 freq=2][center]Hit me![/center]"
-fit_content = true
-
-[node name="FasilitasC" type="Control" parent="ParallaxBackground/Text"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ParallaxBackground/Text/FasilitasC"]
-layout_mode = 0
-offset_left = 984.0
-offset_top = -48.0
-offset_right = 1288.0
-offset_bottom = 16.0
-theme = ExtResource("9_wyqx2")
-theme_override_constants/line_separation = 3
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "[wave amp=20 freq=2][center]Bonus![/center]"
+text = "[wave amp=20 freq=2][center]Bagaimana menurut mu kualitas ekskul di sekolah sekarang?[/center]"
 fit_content = true
 
 [node name="DeathZones" type="Area2D" parent="."]
@@ -202,6 +165,7 @@ position = Vector2(1216, 32)
 script = ExtResource("15_050co")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
+position = Vector2(0, -38)
 shape = SubResource("RectangleShape2D_p6moc")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
