@@ -142,8 +142,6 @@ fit_content = true
 position = Vector2(296, 0)
 shape = SubResource("WorldBoundaryShape2D_eno21")
 
-[node name="HUD" parent="." instance=ExtResource("14_7a58p")]
-
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("16_3mqxx")]
 
 [node name="QuestionBlock" parent="." node_paths=PackedStringArray("question_ui") instance=ExtResource("14_hboqi")]
@@ -178,6 +176,8 @@ height = 256
 
 [node name="Goomba" parent="." instance=ExtResource("15_60klm")]
 position = Vector2(552, 56)
+
+[node name="HUD" parent="." instance=ExtResource("14_7a58p")]
 
 [connection signal="moving_levels" from="Player" to="HUD" method="_on_player_moving_levels"]
 [connection signal="points_scored" from="Player" to="HUD" method="_on_player_points_scored"]

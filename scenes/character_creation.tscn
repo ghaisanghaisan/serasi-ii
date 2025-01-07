@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkl3tuvaa4upn"]
+[gd_scene load_steps=11 format=3 uid="uid://dkl3tuvaa4upn"]
 
 [ext_resource type="Script" path="res://scripts/character_creation.gd" id="1_pdy0p"]
 [ext_resource type="Texture2D" uid="uid://cmf0bmc8k88nf" path="res://assets/bg_test.png" id="1_uonlc"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="2_dip12"]
 [ext_resource type="Script" path="res://scripts/kelas_pick.gd" id="3_1oi3g"]
 [ext_resource type="PackedScene" uid="uid://chxju6pnvq85e" path="res://scenes/scene_transition_animation.tscn" id="5_uum3a"]
+[ext_resource type="Script" path="res://addons/Godot-Onscreen-Keyboard-0bc9a151e15c4c7482e55d07368476390f88beba/addons/onscreenkeyboard/onscreen_keyboard.gd" id="6_6xu2y"]
+[ext_resource type="FontFile" uid="uid://2qeldosicygg" path="res://assets/Fonts/GrapeSoda.ttf" id="7_435qb"]
+[ext_resource type="Texture2D" uid="uid://bjv55r4i4rwf0" path="res://assets/onscreen controls/lineLight19.png" id="8_acbpw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqrn5"]
 texture = ExtResource("1_uonlc")
@@ -154,4 +157,29 @@ text = "Mulai Bermain!"
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("5_uum3a")]
 
+[node name="OnscreenKeyboard" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -244.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("6_6xu2y")
+font = ExtResource("7_435qb")
+font_size = 36
+
+[node name="Back Btn" type="Button" parent="."]
+layout_mode = 1
+offset_left = 80.0
+offset_top = 16.0
+offset_right = 136.0
+offset_bottom = 72.0
+scale = Vector2(-1, 1)
+icon = ExtResource("8_acbpw")
+
 [connection signal="pressed" from="Panel2/HBoxContainer/MarginContainer/Submit" to="." method="_on_submit_pressed"]
+[connection signal="button_down" from="Back Btn" to="." method="_on_back_btn_button_down"]

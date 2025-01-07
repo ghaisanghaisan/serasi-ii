@@ -144,8 +144,6 @@ fit_content = true
 position = Vector2(296, 0)
 shape = SubResource("WorldBoundaryShape2D_eno21")
 
-[node name="HUD" parent="." instance=ExtResource("11_ynskd")]
-
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("12_whls6")]
 
 [node name="MultiChoiceQuestion" parent="." instance=ExtResource("8_2mkxh")]
@@ -190,6 +188,8 @@ height = 256
 position = Vector2(-128, -80)
 rotation = 1.5708
 height = 128
+
+[node name="HUD" parent="." instance=ExtResource("11_ynskd")]
 
 [connection signal="moving_levels" from="Player" to="HUD" method="_on_player_moving_levels"]
 [connection signal="points_scored" from="Player" to="HUD" method="_on_player_points_scored"]

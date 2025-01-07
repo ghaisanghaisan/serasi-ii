@@ -19,3 +19,7 @@ func _on_submit_pressed() -> void:
 	scene_transition_animation.play("Fade_out")
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://scenes/levels/level_intro.tscn")
+
+
+func _on_back_btn_button_down() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

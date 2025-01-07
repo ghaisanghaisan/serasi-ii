@@ -143,8 +143,6 @@ fit_content = true
 position = Vector2(296, 0)
 shape = SubResource("WorldBoundaryShape2D_eno21")
 
-[node name="HUD" parent="." instance=ExtResource("10_gmedk")]
-
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("11_2yxvk")]
 
 [node name="MultiChoiceQuestion" parent="." instance=ExtResource("12_ix3sm")]
@@ -169,6 +167,8 @@ position = Vector2(0, -38)
 shape = SubResource("RectangleShape2D_p6moc")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("10_gmedk")]
 
 [connection signal="moving_levels" from="Player" to="HUD" method="_on_player_moving_levels"]
 [connection signal="on_submit_or_win" from="Player" to="HUD" method="_on_player_on_submit_or_win"]

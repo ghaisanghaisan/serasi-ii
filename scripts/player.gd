@@ -32,8 +32,9 @@ var animating = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export_group("Motion")
-@export var run_speed_damping = 1.1
-@export var speed = 200.0
+@export var run_speed_damping = 3
+@export var stop_speed_damping = 450
+@export var speed = 150.0
 @export var jump_velocity = -350.0
 @export_group("")
 
@@ -57,10 +58,16 @@ func player_movement(delta: float):
 		
 	var direction = Input.get_axis("left", "right")
 	
+	
 	if direction:
 		velocity.x = lerpf(velocity.x, speed * direction, run_speed_damping * delta)
-	else: 
-		velocity.x = move_toward(velocity.x, 0, speed * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0,  stop_speed_damping * delta) 
+		
+	#if direction:
+		#velocity.x = lerpf(velocity.x, speed * direction, run_speed_damping * delta)
+	#else: 
+		#velocity.x = move_toward(velocity.x, 0, speed * delta)
 		
 	animated_sprite_2d.trigger_animation(velocity, direction, player_mode)
 

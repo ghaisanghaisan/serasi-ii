@@ -51,7 +51,7 @@ enum Questions {
 	EkskulB
 }
 
-var url = "https://delusi.my.id/Aspirasi/post"
+var url = "localhost:8080"
 
 func submit():
 	var body = JSON.stringify(FormData)

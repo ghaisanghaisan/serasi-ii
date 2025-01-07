@@ -181,8 +181,6 @@ fit_content = true
 position = Vector2(296, 0)
 shape = SubResource("WorldBoundaryShape2D_eno21")
 
-[node name="HUD" parent="." instance=ExtResource("14_dtgsd")]
-
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("16_0rnck")]
 
 [node name="MultiChoiceQuestion" parent="." instance=ExtResource("13_a4cxb")]
@@ -211,6 +209,8 @@ kalimat_pertanyaan = "Placeholder"
 position = Vector2(1328, 40)
 is_traverseable = true
 to_scene = "res://scenes/levels/level_kbm.tscn"
+
+[node name="HUD" parent="." instance=ExtResource("14_dtgsd")]
 
 [connection signal="moving_levels" from="Player" to="HUD" method="_on_player_moving_levels"]
 [connection signal="points_scored" from="Player" to="HUD" method="_on_player_points_scored"]
