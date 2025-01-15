@@ -203,11 +203,12 @@ theme_override_constants/line_separation = 3
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[wave amp=20 freq=2]				  atau Serap Aspirasi,
- bertujuan untuk mengumpulkan 
- aspirasi peserta didik SMAN 55 Jakarta!"
+ bertujuan untuk mengumpulkan aspirasi 
+ peserta didik SMAN 55 Jakarta!"
 fit_content = true
 
 [node name="Control" type="Control" parent="Text"]
+z_index = -1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

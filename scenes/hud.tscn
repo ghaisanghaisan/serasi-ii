@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://osadctn5vqg5"]
+[gd_scene load_steps=12 format=3 uid="uid://osadctn5vqg5"]
 
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="1_3tjki"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_uow40"]
@@ -7,6 +7,40 @@
 [ext_resource type="Texture2D" uid="uid://7irw22vg6wun" path="res://assets/onscreen controls/lineLight23.png" id="4_4mmsh"]
 [ext_resource type="Texture2D" uid="uid://citsa3ywwo1a6" path="res://assets/onscreen controls/lineLight24.png" id="5_c5xi7"]
 [ext_resource type="Texture2D" uid="uid://bxw5lbd5hnofu" path="res://assets/onscreen controls/lineLight25.png" id="6_yr0pq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eevtm"]
+bg_color = Color(0.517647, 0.172549, 0.172549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0sow"]
+bg_color = Color(0.517647, 0.172549, 0.172549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_offwr"]
+bg_color = Color(0.517647, 0.172549, 0.172549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 128
+corner_radius_top_right = 128
+corner_radius_bottom_right = 128
+corner_radius_bottom_left = 128
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbj44"]
 texture = ExtResource("2_istvc")
@@ -26,53 +60,57 @@ mouse_filter = 1
 [node name="Profile" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 0
-offset_right = 512.0
+offset_right = 448.0
 offset_bottom = 128.0
 
-[node name="BG" type="ColorRect" parent="Control/Profile"]
+[node name="Nama" type="Label" parent="Control/Profile"]
+layout_mode = 2
+offset_left = 176.0
+offset_top = 24.0
+offset_right = 177.0
+offset_bottom = 60.0
+theme = ExtResource("1_3tjki")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_eevtm")
+text = "Danish Ghaisan"
+
+[node name="Kelas" type="Label" parent="Control/Profile"]
+layout_mode = 2
+offset_left = 176.0
+offset_top = 72.0
+offset_right = 256.0
+offset_bottom = 108.0
+theme = ExtResource("1_3tjki")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_n0sow")
+text = "XII-B"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control/Profile"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 8.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 156.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_offwr")
+
+[node name="avatar" type="Panel" parent="Control/Profile/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -70.0
+offset_right = 54.0
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.396078)
-
-[node name="avatar" type="Panel" parent="Control/Profile"]
-layout_mode = 1
-offset_left = 32.0
-offset_right = 132.0
-offset_bottom = 128.0
 size_flags_horizontal = 6
 theme_override_styles/panel = SubResource("StyleBoxTexture_sbj44")
-
-[node name="Profile" type="MarginContainer" parent="Control/Profile"]
-layout_mode = 2
-offset_left = 128.0
-offset_right = 409.0
-offset_bottom = 100.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Profile/Profile"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Nama" type="Label" parent="Control/Profile/Profile/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_3tjki")
-theme_override_font_sizes/font_size = 36
-text = "DANISH GHAISAN"
-
-[node name="Kelas" type="Label" parent="Control/Profile/Profile/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_3tjki")
-theme_override_font_sizes/font_size = 36
-text = "XII-B"
 
 [node name="Score" type="Control" parent="Control"]
 layout_mode = 1

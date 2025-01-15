@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-@onready var nama: Label = $Control/Profile/Profile/VBoxContainer/Nama
-@onready var kelas: Label = $Control/Profile/Profile/VBoxContainer/Kelas
+@onready var nama: Label = $Control/Profile/Nama
+@onready var kelas: Label = $Control/Profile/Kelas
 @onready var end_fade: ColorRect = $Control/EndFade
 @onready var score_label: Label = $Control/Score/MarginContainer/Label
-@onready var avatar: Panel = $Control/Profile/avatar
+@onready var avatar: Panel = $Control/Profile/Panel/avatar
 
 const aspire = preload("res://resources/aspire.tres")
 const serren = preload("res://resources/serren.tres")
