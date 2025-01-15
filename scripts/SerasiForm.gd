@@ -16,7 +16,6 @@ var FormData =  {
   "EkskulB": null
 }
 
-
 enum Kelas {
 	# X – A to H
 	XA, XB, XC, XD, XE, XF, XG, XH,

@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="SERASI II"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/opening.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.952941, 0.952941, 0.952941, 1)
+boot_splash/show_image=false
 boot_splash/image="res://assets/Gmedia.png"
 config/icon="res://icon.svg"
-boot_splash/minimum_display_time=5000
 
 [autoload]
 
@@ -32,7 +32,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Godot-Onscreen-Keyboard-0bc9a151e15c4c7482e55d07368476390f88beba/addons/onscreenkeyboard/plugin.cfg", "res://addons/godot-vim/plugin.cfg")
+enabled=PackedStringArray("res://addons/Godot-Onscreen-Keyboard-0bc9a151e15c4c7482e55d07368476390f88beba/addons/onscreenkeyboard/plugin.cfg")
 
 [input]
 

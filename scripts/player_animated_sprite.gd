@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 
 class_name PlayerAnimatedSprite
 
-func trigger_animation(velocity: Vector2, direction: int, player_mode: Player.PlayerMode):
+func trigger_animation(velocity: Vector2, direction: int, player_mode: Player.PlayerMode, is_crouch: bool):
 	var animation_prefix = Player.PlayerMode.keys()[player_mode].to_snake_case()
 	
 	if not get_parent().is_on_floor():
@@ -22,5 +22,7 @@ func trigger_animation(velocity: Vector2, direction: int, player_mode: Player.Pl
 		# run and idle
 		if velocity.x != 0:
 			play("%s_run" % animation_prefix)
+		elif is_crouch:
+			play("%s_duck" % animation_prefix)
 		else:
 			play("%s_idle" % animation_prefix)

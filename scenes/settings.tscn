@@ -47,6 +47,7 @@ underline = 1
 uri = "https://github.com/ghaisanghaisan"
 
 [node name="Back Btn" type="Button" parent="."]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 16.0
 offset_right = 136.0

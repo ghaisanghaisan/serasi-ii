@@ -1,0 +1,334 @@
+[gd_scene load_steps=15 format=3 uid="uid://dcxo5ym5v62df"]
+
+[ext_resource type="Script" path="res://scenes/opening.gd" id="1_8fu4l"]
+[ext_resource type="Texture2D" uid="uid://cg6pfyawnykyk" path="res://assets/opening/Copy of Website SERASI 2025.png" id="2_024tm"]
+[ext_resource type="Texture2D" uid="uid://dj5pn4if4w54i" path="res://assets/s9/cloud.png" id="3_rdtq5"]
+[ext_resource type="FontFile" uid="uid://dtr4d735iiww0" path="res://assets/Fonts/SuperMario256.ttf" id="3_vbvq0"]
+[ext_resource type="Script" path="res://scenes/cloud.gd" id="4_x8u5x"]
+[ext_resource type="Texture2D" uid="uid://bv5gogk43viar" path="res://assets/LOGO/Logo MPK.png" id="5_7ctpv"]
+[ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="6_a8cbk"]
+[ext_resource type="Script" path="res://scripts/label.gd" id="7_hbopv"]
+[ext_resource type="PackedScene" uid="uid://chxju6pnvq85e" path="res://scenes/scene_transition_animation.tscn" id="7_ut7p4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4k4rs"]
+texture = ExtResource("2_024tm")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuhd1"]
+bg_color = Color(0.62, 0.1674, 0.1674, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o07bl"]
+texture = ExtResource("5_7ctpv")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfcmt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggwug"]
+bg_color = Color(0, 0, 0, 0)
+
+[node name="Opening" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_8fu4l")
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4k4rs")
+
+[node name="Cloud" type="Sprite2D" parent="background"]
+position = Vector2(161, 203)
+scale = Vector2(0.415064, 0.415064)
+texture = ExtResource("3_rdtq5")
+script = ExtResource("4_x8u5x")
+
+[node name="Cloud2" type="Sprite2D" parent="background"]
+position = Vector2(1123, 138)
+scale = Vector2(0.300481, 0.300481)
+texture = ExtResource("3_rdtq5")
+script = ExtResource("4_x8u5x")
+
+[node name="Snk" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -165.0
+offset_right = 540.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(335, 165)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuhd1")
+
+[node name="Label" type="Label" parent="Snk"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -245.0
+offset_right = 512.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_a8cbk")
+theme_override_font_sizes/font_size = 48
+text = "1. Pengisian link ini hanya diperuntukkan bagi seluruh Siswa/i SMA Negeri 55 Jakarta.
+2. Sebelum masuk ke sesi pertanyaan Siswa/i,
+diharapkan untuk mengisi profil terlebih dahulu."
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_hbopv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Snk"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -212.5
+offset_right = 212.5
+offset_bottom = 64.0
+grow_horizontal = 2
+mouse_filter = 1
+theme = ExtResource("6_a8cbk")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center][wave amp=25 freq=2]SnK Permainan[/wave][/center]"
+fit_content = true
+
+[node name="Quote" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -456.0
+offset_top = -165.0
+offset_right = 456.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(335, 165)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuhd1")
+
+[node name="Label" type="Label" parent="Quote"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -202.5
+offset_right = 413.0
+offset_bottom = 202.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_a8cbk")
+theme_override_font_sizes/font_size = 48
+text = "“As we are motivated, we believe that
+‘Beginning together, growing as one, and
+collaborating in shared efforts unlocks the path to success.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_hbopv")
+
+[node name="Desc2" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -451.0
+offset_top = -165.0
+offset_right = 451.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(335, 165)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuhd1")
+
+[node name="Label" type="Label" parent="Desc2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -202.5
+offset_right = 413.0
+offset_bottom = 202.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_a8cbk")
+theme_override_font_sizes/font_size = 48
+text = "Ayo berikan aspirasi terbaikmu dan dapatkan penghargaan spesial dari kami!
+Your Aspiration Matters! ✨"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_hbopv")
+
+[node name="Desc1" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -451.0
+offset_top = -165.0
+offset_right = 451.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(335, 165)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuhd1")
+
+[node name="Label" type="Label" parent="Desc1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -202.5
+offset_right = 413.0
+offset_bottom = 202.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_a8cbk")
+theme_override_font_sizes/font_size = 48
+text = "Serap Aspirasi hadir untuk menjadi wadah keluh kesahmu! 
+Di sini, kamu bebas untuk menyuarakan pendapat terkait kinerja MPK/OSIS
+ataupun sekolah."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_hbopv")
+
+[node name="Logo" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -165.0
+offset_right = 165.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(165, 165)
+theme_override_styles/panel = SubResource("StyleBoxTexture_o07bl")
+
+[node name="Welcome" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -165.0
+offset_right = 335.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(335, 165)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuhd1")
+
+[node name="welcome" type="RichTextLabel" parent="Welcome"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.5
+offset_top = -171.0
+offset_right = 343.5
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 16
+theme_override_constants/line_separation = 18
+theme_override_fonts/normal_font = ExtResource("3_vbvq0")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "
+[wave amp=25 freq=2][center][color=#fff]Welcome to the MPK 
+SMAN 55 Jakarta 
+Community[/color][/center][/wave]"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -394.0
+offset_top = -55.0
+offset_right = -22.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+theme = ExtResource("6_a8cbk")
+theme_override_colors/default_color = Color(1, 1, 1, 0.505882)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[wave amp=25 freq=2]klik untuk berikutnya >>>[/wave]"
+fit_content = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_lfcmt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ggwug")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lfcmt")
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("7_ut7p4")]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

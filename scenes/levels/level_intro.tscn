@@ -165,6 +165,8 @@ offset_top = -96.0
 offset_right = 184.0
 offset_bottom = -48.0
 theme = ExtResource("11_3m5q3")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[wave amp=20 freq=2][center]Selamat datang di[/center][/wave]"
@@ -232,15 +234,17 @@ fit_content = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ParallaxBackground/Text/Penjelasan"]
 layout_mode = 0
-offset_left = 496.0
+offset_left = 488.0
 offset_top = -88.0
 offset_right = 800.0
-offset_bottom = -24.0
+offset_bottom = -22.0
 theme = ExtResource("11_3m5q3")
 theme_override_constants/line_separation = 3
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[wave amp=20 freq=2]				  atau Serap Aspirasi, bertujuan untuk mengumpulkan aspirasi peserta didik SMAN 55 Jakarta!"
+text = "[wave amp=20 freq=2]				  atau Serap Aspirasi,
+ bertujuan untuk mengumpulkan 
+ aspirasi peserta didik SMAN 55 Jakarta!"
 fit_content = true
 
 [node name="Control" type="Control" parent="ParallaxBackground/Text"]
@@ -259,7 +263,8 @@ theme = ExtResource("11_3m5q3")
 theme_override_constants/line_separation = 3
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[wave amp=20 freq=2][center]Mari mulai petualangan memberi aspirasimu![/center]"
+text = "[wave amp=20 freq=2][center]Jadi... Mari mulai petualangan 
+memberi aspirasimu![/center]"
 fit_content = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="ParallaxBackground/Text/Control"]

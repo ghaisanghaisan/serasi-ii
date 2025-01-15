@@ -25,6 +25,7 @@ const PIPE_ENTER_THRESHOLD = 8
 
 
 var is_dead = false
+var is_crouch = false
 var can_move = true
 var animating = false
 
@@ -35,7 +36,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var run_speed_damping = 3
 @export var stop_speed_damping = 450
 @export var speed = 150.0
-@export var jump_velocity = -350.0
+@export var jump_velocity = -360.0
 @export_group("")
 
 @export_group("Stomping Enemies")
@@ -53,23 +54,19 @@ func player_movement(delta: float):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		
-	if Input.is_action_just_released("jump") and velocity.y < 0:
-		velocity.y *= 0.5
+	#if Input.is_action_just_released("jump") and velocity.y < 0:
+		#velocity.y *= 0.5
 		
+		
+	is_crouch = Input.is_action_pressed("down") if is_on_floor() else false
 	var direction = Input.get_axis("left", "right")
 	
-	
-	if direction:
+	if direction and !is_crouch:
 		velocity.x = lerpf(velocity.x, speed * direction, run_speed_damping * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0,  stop_speed_damping * delta) 
-		
-	#if direction:
-		#velocity.x = lerpf(velocity.x, speed * direction, run_speed_damping * delta)
-	#else: 
-		#velocity.x = move_toward(velocity.x, 0, speed * delta)
-		
-	animated_sprite_2d.trigger_animation(velocity, direction, player_mode)
+	
+	animated_sprite_2d.trigger_animation(velocity, direction, player_mode, is_crouch)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

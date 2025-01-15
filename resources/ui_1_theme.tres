@@ -4,3 +4,5 @@
 
 [resource]
 default_font = ExtResource("1_4ua76")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 8

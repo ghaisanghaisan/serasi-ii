@@ -4,6 +4,10 @@ extends CanvasLayer
 @onready var kelas: Label = $Control/Profile/Profile/VBoxContainer/Kelas
 @onready var end_fade: ColorRect = $Control/EndFade
 @onready var score_label: Label = $Control/Score/MarginContainer/Label
+@onready var avatar: Panel = $Control/Profile/avatar
+
+const aspire = preload("res://resources/aspire.tres")
+const serren = preload("res://resources/serren.tres")
 
 const MAX_NAME_LENGTH = 15;
 
@@ -14,12 +18,19 @@ func _ready() -> void:
 	kelas.text = SerasiForm.FormData["Kelas"]
 	score_label.text = "Skor: " + give_score_padding(score)
 	
+	match Globals.avatar:
+		Globals.Avatar.Aspire:
+			avatar.add_theme_stylebox_override("panel", aspire)
+		Globals.Avatar.Serren:
+			avatar.add_theme_stylebox_override("panel", serren)
+			
 	
-func give_score_padding(score: int) -> String:
-	var score_str = str(score)
+	
+func give_score_padding(s: int) -> String:
+	var score_str = str(s)
 	return score_str.pad_zeros(4)
 
-func _on_player_on_submit_or_win(player_pos: Vector2) -> void:
+func _on_player_on_submit_or_win(_player_pos: Vector2) -> void:
 	var focus_tween = get_tree().create_tween();
 	print("Fading into black")
 	
