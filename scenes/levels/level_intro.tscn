@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://ccopth37esdvc"]
+[gd_scene load_steps=31 format=4 uid="uid://ccopth37esdvc"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1qpdv"]
 [ext_resource type="PackedScene" uid="uid://d22ldn7cuak65" path="res://scenes/player.tscn" id="1_4ayib"]
@@ -11,11 +11,25 @@
 [ext_resource type="PackedScene" uid="uid://j27iyjcu4h68" path="res://scenes/goomba.tscn" id="8_j5jdo"]
 [ext_resource type="Texture2D" uid="uid://8hx0hwj6028f" path="res://assets/Sprites/PipeConnection.png" id="9_v5qot"]
 [ext_resource type="PackedScene" uid="uid://bq6a0vfr6qkss" path="res://scenes/pipe.tscn" id="9_xrp84"]
-[ext_resource type="Texture2D" uid="uid://cmf0bmc8k88nf" path="res://assets/bg_test.png" id="10_5vhlb"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="11_3m5q3"]
+[ext_resource type="Texture2D" uid="uid://dj5pn4if4w54i" path="res://assets/s9/cloud.png" id="11_a52db"]
 [ext_resource type="FontFile" uid="uid://dtr4d735iiww0" path="res://assets/Fonts/SuperMario256.ttf" id="11_r5kdb"]
 [ext_resource type="PackedScene" uid="uid://osadctn5vqg5" path="res://scenes/hud.tscn" id="12_flk4d"]
+[ext_resource type="Script" path="res://scenes/cloud.gd" id="12_sjlpb"]
 [ext_resource type="PackedScene" uid="uid://chxju6pnvq85e" path="res://scenes/scene_transition_animation.tscn" id="16_ws55l"]
+[ext_resource type="Texture2D" uid="uid://c8ew4ral12a5l" path="res://assets/s9/school.png" id="18_re307"]
+
+[sub_resource type="Gradient" id="Gradient_tck0u"]
+offsets = PackedFloat32Array(0.315436, 1)
+colors = PackedColorArray(0, 0.513726, 0.745098, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_82fx7"]
+gradient = SubResource("Gradient_tck0u")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mk4h3"]
+texture = SubResource("GradientTexture2D_82fx7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ar5e8"]
 texture = ExtResource("2_b1hcm")
@@ -62,6 +76,183 @@ distance = -128.0
 [node name="level_intro" type="Node2D"]
 script = ExtResource("1_1qpdv")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -99
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mk4h3")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(79.726, 177.125)
+scale = Vector2(0.249199, 0.249199)
+texture = ExtResource("11_a52db")
+script = ExtResource("12_sjlpb")
+SPEED = 5
+
+[node name="Cloud3" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(500.075, 260.563)
+scale = Vector2(0.175881, 0.175881)
+texture = ExtResource("11_a52db")
+script = ExtResource("12_sjlpb")
+SPEED = 5
+OSC_SPEED = 0.524
+OFFSET = 0.3
+
+[node name="Cloud2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1096.5, 129.562)
+scale = Vector2(0.246394, 0.246394)
+texture = ExtResource("11_a52db")
+script = ExtResource("12_sjlpb")
+SPEED = 5
+OFFSET = 0.785
+
+[node name="Text" type="Node" parent="."]
+
+[node name="Selamat Datang" type="Control" parent="Text"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Text/Selamat Datang"]
+layout_mode = 0
+offset_top = -96.0
+offset_right = 184.0
+offset_bottom = -48.0
+theme = ExtResource("11_3m5q3")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[wave amp=20 freq=2][center]Selamat datang di[/center][/wave]"
+fit_content = true
+
+[node name="SERASI" type="RichTextLabel" parent="Text/Selamat Datang"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -132.0
+offset_right = 164.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("11_r5kdb")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "
+
+[wave amp=50 freq=2][center][color=#009CDA]S[/color][color=#FCD000]E[/color][color=#E71E07]R[/color][color=#42B132]A[/color][color=#FCD000]S[/color][color=#E71E07]I[/color][/center][/wave]"
+fit_content = true
+
+[node name="Penjelasan" type="Control" parent="Text"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SERASI" type="RichTextLabel" parent="Text/Penjelasan"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 428.0
+offset_top = -164.0
+offset_right = 612.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("11_r5kdb")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "
+
+[wave amp=50 freq=2][center][color=#009CDA]S[/color][color=#FCD000]E[/color][color=#E71E07]R[/color][color=#42B132]A[/color][color=#FCD000]S[/color][color=#E71E07]I[/color][/center][/wave]"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Text/Penjelasan"]
+layout_mode = 0
+offset_left = 488.0
+offset_top = -88.0
+offset_right = 800.0
+offset_bottom = -22.0
+theme = ExtResource("11_3m5q3")
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[wave amp=20 freq=2]				  atau Serap Aspirasi,
+ bertujuan untuk mengumpulkan 
+ aspirasi peserta didik SMAN 55 Jakarta!"
+fit_content = true
+
+[node name="Control" type="Control" parent="Text"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Text/Control"]
+layout_mode = 0
+offset_left = 952.0
+offset_top = -64.0
+offset_right = 1256.0
+offset_bottom = 2.0
+theme = ExtResource("11_3m5q3")
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[wave amp=20 freq=2][center]Jadi... Mari mulai petualangan 
+memberi aspirasimu![/center]"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Text/Control"]
+layout_mode = 0
+offset_left = 1240.0
+offset_top = 40.0
+offset_right = 1280.0
+offset_bottom = 64.0
+theme = ExtResource("11_3m5q3")
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[wave amp=20 freq=2] Gas!"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Text/Control"]
+layout_mode = 0
+offset_left = 1304.0
+offset_top = -88.0
+offset_right = 1352.0
+offset_bottom = -64.0
+theme = ExtResource("11_3m5q3")
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[wave amp=20 freq=2] Malas"
+fit_content = true
+
 [node name="Player" parent="." instance=ExtResource("1_4ayib")]
 unique_name_in_owner = true
 position = Vector2(-97, 52)
@@ -78,19 +269,6 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 1.0
 drag_bottom_margin = 1.0
-
-[node name="Layer0" type="TileMapLayer" parent="."]
-use_parent_material = true
-position = Vector2(6, 0)
-tile_map_data = PackedByteArray("AADx/wQAAwAAAAAAAADx/wUAAwAAAAAAAADx/wYAAwAAAAAAAADx/wcAAwAAAAAAAADy/wQAAwAAAAAAAADy/wUAAwAAAAAAAADy/wYAAwAAAAAAAADy/wcAAwAAAAAAAADz/wQAAwAAAAAAAADz/wUAAwAAAAAAAADz/wYAAwAAAAAAAADz/wcAAwAAAAAAAAD0/wQAAwAAAAAAAAD0/wUAAwAAAAAAAAD0/wYAAwAAAAAAAAD0/wcAAwAAAAAAAAD1/wQAAwAAAAAAAAD1/wUAAwAAAAAAAAD1/wYAAwAAAAAAAAD1/wcAAwAAAAAAAAD2/wQAAwAAAAAAAAD2/wUAAwAAAAAAAAD2/wYAAwAAAAAAAAD2/wcAAwAAAAAAAAD3/wQAAwAAAAAAAAD3/wUAAwAAAAAAAAD3/wYAAwAAAAAAAAD3/wcAAwAAAAAAAAD4/wQAAwAAAAAAAAD4/wUAAwAAAAAAAAD4/wYAAwAAAAAAAAD4/wcAAwAAAAAAAAD5/wQAAwAAAAAAAAD5/wUAAwAAAAAAAAD5/wYAAwAAAAAAAAD5/wcAAwAAAAAAAAD6/wQAAwAAAAAAAAD6/wUAAwAAAAAAAAD6/wYAAwAAAAAAAAD6/wcAAwAAAAAAAAD7/wQAAwAAAAAAAAD7/wUAAwAAAAAAAAD7/wYAAwAAAAAAAAD7/wcAAwAAAAAAAAD8/wQAAwAAAAAAAAD8/wUAAwAAAAAAAAD8/wYAAwAAAAAAAAD8/wcAAwAAAAAAAAD9/wQAAwAAAAAAAAD9/wUAAwAAAAAAAAD9/wYAAwAAAAAAAAD9/wcAAwAAAAAAAAD+/wQAAwAAAAAAAAD+/wUAAwAAAAAAAAD+/wYAAwAAAAAAAAD+/wcAAwAAAAAAAAD//wQAAwAAAAAAAAD//wUAAwAAAAAAAAD//wYAAwAAAAAAAAD//wcAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAcAAwAAAAAAAAABAAQAAwAAAAAAAAABAAUAAwAAAAAAAAABAAYAAwAAAAAAAAABAAcAAwAAAAAAAAACAAQAAwAAAAAAAAACAAUAAwAAAAAAAAACAAYAAwAAAAAAAAACAAcAAwAAAAAAAAADAAQAAwAAAAAAAAADAAUAAwAAAAAAAAADAAYAAwAAAAAAAAADAAcAAwAAAAAAAAAEAAQAAwAAAAAAAAAEAAUAAwAAAAAAAAAEAAYAAwAAAAAAAAAEAAcAAwAAAAAAAAAFAAQAAwAAAAAAAAAFAAUAAwAAAAAAAAAFAAYAAwAAAAAAAAAFAAcAAwAAAAAAAAAGAAQAAwAAAAAAAAAGAAUAAwAAAAAAAAAGAAYAAwAAAAAAAAAGAAcAAwAAAAAAAAAHAAQAAwAAAAAAAAAHAAUAAwAAAAAAAAAHAAYAAwAAAAAAAAAHAAcAAwAAAAAAAAAIAAQAAwAAAAAAAAAIAAUAAwAAAAAAAAAIAAYAAwAAAAAAAAAIAAcAAwAAAAAAAAAJAAQAAwAAAAAAAAAJAAUAAwAAAAAAAAAJAAYAAwAAAAAAAAAJAAcAAwAAAAAAAAAKAAQAAwAAAAAAAAAKAAUAAwAAAAAAAAAKAAYAAwAAAAAAAAAKAAcAAwAAAAAAAAALAAQAAwAAAAAAAAALAAUAAwAAAAAAAAALAAYAAwAAAAAAAAALAAcAAwAAAAAAAAAMAAQAAwAAAAAAAAAMAAUAAwAAAAAAAAAMAAYAAwAAAAAAAAAMAAcAAwAAAAAAAAANAAQAAwAAAAAAAAANAAUAAwAAAAAAAAANAAYAAwAAAAAAAAANAAcAAwAAAAAAAAAOAAQAAwAAAAAAAAAOAAUAAwAAAAAAAAAOAAYAAwAAAAAAAAAOAAcAAwAAAAAAAAAVAAQAAwAAAAAAAAAVAAUAAwAAAAAAAAAVAAYAAwAAAAAAAAAVAAcAAwAAAAAAAAAWAAQAAwAAAAAAAAAWAAUAAwAAAAAAAAAWAAYAAwAAAAAAAAAWAAcAAwAAAAAAAAAXAAQAAwAAAAAAAAAXAAUAAwAAAAAAAAAXAAYAAwAAAAAAAAAXAAcAAwAAAAAAAAAYAAQAAwAAAAAAAAAYAAUAAwAAAAAAAAAYAAYAAwAAAAAAAAAYAAcAAwAAAAAAAAAZAAQAAwAAAAAAAAAZAAUAAwAAAAAAAAAZAAYAAwAAAAAAAAAZAAcAAwAAAAAAAAAaAAQAAwAAAAAAAAAaAAUAAwAAAAAAAAAaAAYAAwAAAAAAAAAaAAcAAwAAAAAAAAAbAAQAAwAAAAAAAAAbAAUAAwAAAAAAAAAbAAYAAwAAAAAAAAAbAAcAAwAAAAAAAAAcAAQAAwAAAAAAAAAcAAUAAwAAAAAAAAAcAAYAAwAAAAAAAAAcAAcAAwAAAAAAAAAdAAQAAwAAAAAAAAAdAAUAAwAAAAAAAAAdAAYAAwAAAAAAAAAdAAcAAwAAAAAAAAAeAAQAAwAAAAAAAAAeAAUAAwAAAAAAAAAeAAYAAwAAAAAAAAAeAAcAAwAAAAAAAAAfAAQAAwAAAAAAAAAfAAUAAwAAAAAAAAAfAAYAAwAAAAAAAAAfAAcAAwAAAAAAAAAgAAQAAwAAAAAAAAAgAAUAAwAAAAAAAAAgAAYAAwAAAAAAAAAgAAcAAwAAAAAAAAAhAAQAAwAAAAAAAAAhAAUAAwAAAAAAAAAhAAYAAwAAAAAAAAAhAAcAAwAAAAAAAAAiAAQAAwAAAAAAAAAiAAUAAwAAAAAAAAAiAAYAAwAAAAAAAAAiAAcAAwAAAAAAAAAjAAQAAwAAAAAAAAAjAAUAAwAAAAAAAAAjAAYAAwAAAAAAAAAjAAcAAwAAAAAAAAAkAAQAAwAAAAAAAAAkAAUAAwAAAAAAAAAkAAYAAwAAAAAAAAAkAAcAAwAAAAAAAAAlAAQAAwAAAAAAAAAlAAUAAwAAAAAAAAAlAAYAAwAAAAAAAAAlAAcAAwAAAAAAAAAmAAQAAwAAAAAAAAAmAAUAAwAAAAAAAAAmAAYAAwAAAAAAAAAmAAcAAwAAAAAAAAAnAAQAAwAAAAAAAAAnAAUAAwAAAAAAAAAnAAYAAwAAAAAAAAAnAAcAAwAAAAAAAAAoAAQAAwAAAAAAAAAoAAUAAwAAAAAAAAAoAAYAAwAAAAAAAAAoAAcAAwAAAAAAAAApAAQAAwAAAAAAAAApAAUAAwAAAAAAAAApAAYAAwAAAAAAAAApAAcAAwAAAAAAAAAqAAQAAwAAAAAAAAAqAAUAAwAAAAAAAAAqAAYAAwAAAAAAAAAqAAcAAwAAAAAAAAArAAQAAwAAAAAAAAArAAUAAwAAAAAAAAArAAYAAwAAAAAAAAArAAcAAwAAAAAAAAAsAAQAAwAAAAAAAAAsAAUAAwAAAAAAAAAsAAYAAwAAAAAAAAAsAAcAAwAAAAAAAAAtAAQAAwAAAAAAAAAtAAUAAwAAAAAAAAAtAAYAAwAAAAAAAAAtAAcAAwAAAAAAAAAuAAQAAwAAAAAAAAAuAAUAAwAAAAAAAAAuAAYAAwAAAAAAAAAuAAcAAwAAAAAAAAAvAAQAAwAAAAAAAAAvAAUAAwAAAAAAAAAvAAYAAwAAAAAAAAAvAAcAAwAAAAAAAAAwAAQAAwAAAAAAAAAwAAUAAwAAAAAAAAAwAAYAAwAAAAAAAAAwAAcAAwAAAAAAAAAxAAQAAwAAAAAAAAAxAAUAAwAAAAAAAAAxAAYAAwAAAAAAAAAxAAcAAwAAAAAAAAAyAAQAAwAAAAAAAAAyAAUAAwAAAAAAAAAyAAYAAwAAAAAAAAAyAAcAAwAAAAAAAAAzAAQAAwAAAAAAAAAzAAUAAwAAAAAAAAAzAAYAAwAAAAAAAAAzAAcAAwAAAAAAAAA0AAQAAwAAAAAAAAA0AAUAAwAAAAAAAAA0AAYAAwAAAAAAAAA0AAcAAwAAAAAAAAA1AAQAAwAAAAAAAAA1AAUAAwAAAAAAAAA1AAYAAwAAAAAAAAA1AAcAAwAAAAAAAAA2AAQAAwAAAAAAAAA2AAUAAwAAAAAAAAA2AAYAAwAAAAAAAAA2AAcAAwAAAAAAAADp/wQAAwAAAAAAAADp/wUAAwAAAAAAAADp/wYAAwAAAAAAAADp/wcAAwAAAAAAAADq/wQAAwAAAAAAAADq/wUAAwAAAAAAAADq/wYAAwAAAAAAAADq/wcAAwAAAAAAAADr/wQAAwAAAAAAAADr/wUAAwAAAAAAAADr/wYAAwAAAAAAAADr/wcAAwAAAAAAAADs/wQAAwAAAAAAAADs/wUAAwAAAAAAAADs/wYAAwAAAAAAAADs/wcAAwAAAAAAAADt/wQAAwAAAAAAAADt/wUAAwAAAAAAAADt/wYAAwAAAAAAAADt/wcAAwAAAAAAAADu/wQAAwAAAAAAAADu/wUAAwAAAAAAAADu/wYAAwAAAAAAAADu/wcAAwAAAAAAAADv/wQAAwAAAAAAAADv/wUAAwAAAAAAAADv/wYAAwAAAAAAAADv/wcAAwAAAAAAAADw/wQAAwAAAAAAAADw/wUAAwAAAAAAAADw/wYAAwAAAAAAAADw/wcAAwAAAAAAAAA3AAQAAwAAAAAAAAA3AAUAAwAAAAAAAAA3AAYAAwAAAAAAAAA3AAcAAwAAAAAAAAA4AAQAAwAAAAAAAAA4AAUAAwAAAAAAAAA4AAYAAwAAAAAAAAA4AAcAAwAAAAAAAAA5AAQAAwAAAAAAAAA5AAUAAwAAAAAAAAA5AAYAAwAAAAAAAAA5AAcAAwAAAAAAAAA6AAQAAwAAAAAAAAA6AAUAAwAAAAAAAAA6AAYAAwAAAAAAAAA6AAcAAwAAAAAAAAA7AAQAAwAAAAAAAAA7AAUAAwAAAAAAAAA7AAYAAwAAAAAAAAA7AAcAAwAAAAAAAAA8AAQAAwAAAAAAAAA8AAUAAwAAAAAAAAA8AAYAAwAAAAAAAAA8AAcAAwAAAAAAAAA9AAQAAwAAAAAAAAA9AAUAAwAAAAAAAAA9AAYAAwAAAAAAAAA9AAcAAwAAAAAAAAA+AAQAAwAAAAAAAAA+AAUAAwAAAAAAAAA+AAYAAwAAAAAAAAA+AAcAAwAAAAAAAAA/AAQAAwAAAAAAAAA/AAUAAwAAAAAAAAA/AAYAAwAAAAAAAAA/AAcAAwAAAAAAAABAAAQAAwAAAAAAAABAAAUAAwAAAAAAAABAAAYAAwAAAAAAAABAAAcAAwAAAAAAAABBAAQAAwAAAAAAAABBAAUAAwAAAAAAAABBAAYAAwAAAAAAAABBAAcAAwAAAAAAAABCAAQAAwAAAAAAAABCAAUAAwAAAAAAAABCAAYAAwAAAAAAAABCAAcAAwAAAAAAAABDAAQAAwAAAAAAAABDAAUAAwAAAAAAAABDAAYAAwAAAAAAAABDAAcAAwAAAAAAAABEAAQAAwAAAAAAAABEAAUAAwAAAAAAAABEAAYAAwAAAAAAAABEAAcAAwAAAAAAAABFAAQAAwAAAAAAAABFAAUAAwAAAAAAAABFAAYAAwAAAAAAAABFAAcAAwAAAAAAAABGAAQAAwAAAAAAAABGAAUAAwAAAAAAAABGAAYAAwAAAAAAAABGAAcAAwAAAAAAAABHAAQAAwAAAAAAAABHAAUAAwAAAAAAAABHAAYAAwAAAAAAAABHAAcAAwAAAAAAAABIAAQAAwAAAAAAAABIAAUAAwAAAAAAAABIAAYAAwAAAAAAAABIAAcAAwAAAAAAAABJAAQAAwAAAAAAAABJAAUAAwAAAAAAAABJAAYAAwAAAAAAAABJAAcAAwAAAAAAAABKAAQAAwAAAAAAAABKAAUAAwAAAAAAAABKAAYAAwAAAAAAAABKAAcAAwAAAAAAAABLAAQAAwAAAAAAAABLAAUAAwAAAAAAAABLAAYAAwAAAAAAAABLAAcAAwAAAAAAAABMAAQAAwAAAAAAAABMAAUAAwAAAAAAAABMAAYAAwAAAAAAAABMAAcAAwAAAAAAAABNAAQAAwAAAAAAAABNAAUAAwAAAAAAAABNAAYAAwAAAAAAAABNAAcAAwAAAAAAAABOAAQAAwAAAAAAAABOAAUAAwAAAAAAAABOAAYAAwAAAAAAAABOAAcAAwAAAAAAAABPAAQAAwAAAAAAAABPAAUAAwAAAAAAAABPAAYAAwAAAAAAAABPAAcAAwAAAAAAAABQAAQAAwAAAAAAAABQAAUAAwAAAAAAAABQAAYAAwAAAAAAAABQAAcAAwAAAAAAAABRAAQAAwAAAAAAAABRAAUAAwAAAAAAAABRAAYAAwAAAAAAAABRAAcAAwAAAAAAAABSAAQAAwAAAAAAAABSAAUAAwAAAAAAAABSAAYAAwAAAAAAAABSAAcAAwAAAAAAAABTAAQAAwAAAAAAAABTAAUAAwAAAAAAAABTAAYAAwAAAAAAAABTAAcAAwAAAAAAAABUAAQAAwAAAAAAAABUAAUAAwAAAAAAAABUAAYAAwAAAAAAAABUAAcAAwAAAAAAAABVAAQAAwAAAAAAAABVAAUAAwAAAAAAAABVAAYAAwAAAAAAAABVAAcAAwAAAAAAAABWAAQAAwAAAAAAAABWAAUAAwAAAAAAAABWAAYAAwAAAAAAAABWAAcAAwAAAAAAAABXAAQAAwAAAAAAAABXAAUAAwAAAAAAAABXAAYAAwAAAAAAAABXAAcAAwAAAAAAAABYAAQAAwAAAAAAAABYAAUAAwAAAAAAAABYAAYAAwAAAAAAAABYAAcAAwAAAAAAAABZAAQAAwAAAAAAAABZAAUAAwAAAAAAAABZAAYAAwAAAAAAAABZAAcAAwAAAAAAAABaAAQAAwAAAAAAAABaAAUAAwAAAAAAAABaAAYAAwAAAAAAAABaAAcAAwAAAAAAAABbAAQAAwAAAAAAAABbAAUAAwAAAAAAAABbAAYAAwAAAAAAAABbAAcAAwAAAAAAAABcAAQAAwAAAAAAAABcAAUAAwAAAAAAAABcAAYAAwAAAAAAAABcAAcAAwAAAAAAAABdAAQAAwAAAAAAAABdAAUAAwAAAAAAAABdAAYAAwAAAAAAAABdAAcAAwAAAAAAAABeAAQAAwAAAAAAAABeAAUAAwAAAAAAAABeAAYAAwAAAAAAAABeAAcAAwAAAAAAAABfAAQAAwAAAAAAAABfAAUAAwAAAAAAAABfAAYAAwAAAAAAAABfAAcAAwAAAAAAAAA=")
-tile_set = SubResource("TileSet_8vnex")
-
-[node name="WorldBoundary" type="StaticBody2D" parent="."]
-collision_layer = 2
-physics_material_override = SubResource("PhysicsMaterial_xc0ub")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary"]
-shape = SubResource("WorldBoundaryShape2D_y50h6")
 
 [node name="Bricks" type="Node" parent="."]
 
@@ -136,171 +314,6 @@ texture = ExtResource("9_v5qot")
 position = Vector2(1328, -56)
 height = 100
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-168, -16)
-motion_scale = Vector2(0.2, 0.2)
-motion_offset = Vector2(0, 73)
-motion_mirroring = Vector2(510, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("10_5vhlb")
-centered = false
-offset = Vector2(0, -300)
-region_enabled = true
-region_rect = Rect2(0, 0, 510, 1000)
-
-[node name="Text" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Selamat Datang" type="Control" parent="ParallaxBackground/Text"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ParallaxBackground/Text/Selamat Datang"]
-layout_mode = 0
-offset_top = -96.0
-offset_right = 184.0
-offset_bottom = -48.0
-theme = ExtResource("11_3m5q3")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "[wave amp=20 freq=2][center]Selamat datang di[/center][/wave]"
-fit_content = true
-
-[node name="SERASI" type="RichTextLabel" parent="ParallaxBackground/Text/Selamat Datang"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -132.0
-offset_right = 164.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 8
-theme_override_fonts/normal_font = ExtResource("11_r5kdb")
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "
-
-[wave amp=50 freq=2][center][color=#009CDA]S[/color][color=#FCD000]E[/color][color=#E71E07]R[/color][color=#42B132]A[/color][color=#FCD000]S[/color][color=#E71E07]I[/color][/center][/wave]"
-fit_content = true
-
-[node name="Penjelasan" type="Control" parent="ParallaxBackground/Text"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SERASI" type="RichTextLabel" parent="ParallaxBackground/Text/Penjelasan"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 428.0
-offset_top = -164.0
-offset_right = 612.0
-offset_bottom = -36.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_outline_size = 8
-theme_override_fonts/normal_font = ExtResource("11_r5kdb")
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "
-
-[wave amp=50 freq=2][center][color=#009CDA]S[/color][color=#FCD000]E[/color][color=#E71E07]R[/color][color=#42B132]A[/color][color=#FCD000]S[/color][color=#E71E07]I[/color][/center][/wave]"
-fit_content = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ParallaxBackground/Text/Penjelasan"]
-layout_mode = 0
-offset_left = 488.0
-offset_top = -88.0
-offset_right = 800.0
-offset_bottom = -22.0
-theme = ExtResource("11_3m5q3")
-theme_override_constants/line_separation = 3
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "[wave amp=20 freq=2]				  atau Serap Aspirasi,
- bertujuan untuk mengumpulkan 
- aspirasi peserta didik SMAN 55 Jakarta!"
-fit_content = true
-
-[node name="Control" type="Control" parent="ParallaxBackground/Text"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ParallaxBackground/Text/Control"]
-layout_mode = 0
-offset_left = 952.0
-offset_top = -64.0
-offset_right = 1256.0
-offset_bottom = 2.0
-theme = ExtResource("11_3m5q3")
-theme_override_constants/line_separation = 3
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "[wave amp=20 freq=2][center]Jadi... Mari mulai petualangan 
-memberi aspirasimu![/center]"
-fit_content = true
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="ParallaxBackground/Text/Control"]
-layout_mode = 0
-offset_left = 1240.0
-offset_top = 40.0
-offset_right = 1280.0
-offset_bottom = 64.0
-theme = ExtResource("11_3m5q3")
-theme_override_constants/line_separation = 3
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "[wave amp=20 freq=2]Gas!"
-fit_content = true
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="ParallaxBackground/Text/Control"]
-layout_mode = 0
-offset_left = 1304.0
-offset_top = -88.0
-offset_right = 1352.0
-offset_bottom = -64.0
-theme = ExtResource("11_3m5q3")
-theme_override_constants/line_separation = 3
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "[wave amp=20 freq=2]Malas"
-fit_content = true
-
-[node name="DeathZones" type="Area2D" parent="."]
-
-[node name="Out Of Map" type="CollisionShape2D" parent="DeathZones"]
-position = Vector2(296, 0)
-shape = SubResource("WorldBoundaryShape2D_eno21")
-
-[node name="HUD" parent="." instance=ExtResource("12_flk4d")]
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Goomba" parent="Enemies" instance=ExtResource("8_j5jdo")]
@@ -315,7 +328,34 @@ position = Vector2(240, 56)
 [node name="Goomba3" parent="Enemies" instance=ExtResource("8_j5jdo")]
 position = Vector2(672, 56)
 
+[node name="Layer0" type="TileMapLayer" parent="."]
+use_parent_material = true
+position = Vector2(6, 0)
+tile_map_data = PackedByteArray("AADx/wQAAwAAAAAAAADx/wUAAwAAAAAAAADx/wYAAwAAAAAAAADx/wcAAwAAAAAAAADy/wQAAwAAAAAAAADy/wUAAwAAAAAAAADy/wYAAwAAAAAAAADy/wcAAwAAAAAAAADz/wQAAwAAAAAAAADz/wUAAwAAAAAAAADz/wYAAwAAAAAAAADz/wcAAwAAAAAAAAD0/wQAAwAAAAAAAAD0/wUAAwAAAAAAAAD0/wYAAwAAAAAAAAD0/wcAAwAAAAAAAAD1/wQAAwAAAAAAAAD1/wUAAwAAAAAAAAD1/wYAAwAAAAAAAAD1/wcAAwAAAAAAAAD2/wQAAwAAAAAAAAD2/wUAAwAAAAAAAAD2/wYAAwAAAAAAAAD2/wcAAwAAAAAAAAD3/wQAAwAAAAAAAAD3/wUAAwAAAAAAAAD3/wYAAwAAAAAAAAD3/wcAAwAAAAAAAAD4/wQAAwAAAAAAAAD4/wUAAwAAAAAAAAD4/wYAAwAAAAAAAAD4/wcAAwAAAAAAAAD5/wQAAwAAAAAAAAD5/wUAAwAAAAAAAAD5/wYAAwAAAAAAAAD5/wcAAwAAAAAAAAD6/wQAAwAAAAAAAAD6/wUAAwAAAAAAAAD6/wYAAwAAAAAAAAD6/wcAAwAAAAAAAAD7/wQAAwAAAAAAAAD7/wUAAwAAAAAAAAD7/wYAAwAAAAAAAAD7/wcAAwAAAAAAAAD8/wQAAwAAAAAAAAD8/wUAAwAAAAAAAAD8/wYAAwAAAAAAAAD8/wcAAwAAAAAAAAD9/wQAAwAAAAAAAAD9/wUAAwAAAAAAAAD9/wYAAwAAAAAAAAD9/wcAAwAAAAAAAAD+/wQAAwAAAAAAAAD+/wUAAwAAAAAAAAD+/wYAAwAAAAAAAAD+/wcAAwAAAAAAAAD//wQAAwAAAAAAAAD//wUAAwAAAAAAAAD//wYAAwAAAAAAAAD//wcAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAcAAwAAAAAAAAABAAQAAwAAAAAAAAABAAUAAwAAAAAAAAABAAYAAwAAAAAAAAABAAcAAwAAAAAAAAACAAQAAwAAAAAAAAACAAUAAwAAAAAAAAACAAYAAwAAAAAAAAACAAcAAwAAAAAAAAADAAQAAwAAAAAAAAADAAUAAwAAAAAAAAADAAYAAwAAAAAAAAADAAcAAwAAAAAAAAAEAAQAAwAAAAAAAAAEAAUAAwAAAAAAAAAEAAYAAwAAAAAAAAAEAAcAAwAAAAAAAAAFAAQAAwAAAAAAAAAFAAUAAwAAAAAAAAAFAAYAAwAAAAAAAAAFAAcAAwAAAAAAAAAGAAQAAwAAAAAAAAAGAAUAAwAAAAAAAAAGAAYAAwAAAAAAAAAGAAcAAwAAAAAAAAAHAAQAAwAAAAAAAAAHAAUAAwAAAAAAAAAHAAYAAwAAAAAAAAAHAAcAAwAAAAAAAAAIAAQAAwAAAAAAAAAIAAUAAwAAAAAAAAAIAAYAAwAAAAAAAAAIAAcAAwAAAAAAAAAJAAQAAwAAAAAAAAAJAAUAAwAAAAAAAAAJAAYAAwAAAAAAAAAJAAcAAwAAAAAAAAAKAAQAAwAAAAAAAAAKAAUAAwAAAAAAAAAKAAYAAwAAAAAAAAALAAQAAwAAAAAAAAALAAUAAwAAAAAAAAALAAYAAwAAAAAAAAALAAcAAwAAAAAAAAAMAAQAAwAAAAAAAAAMAAUAAwAAAAAAAAAMAAYAAwAAAAAAAAAMAAcAAwAAAAAAAAANAAQAAwAAAAAAAAANAAUAAwAAAAAAAAANAAYAAwAAAAAAAAANAAcAAwAAAAAAAAAOAAQAAwAAAAAAAAAOAAUAAwAAAAAAAAAOAAYAAwAAAAAAAAAOAAcAAwAAAAAAAAAVAAQAAwAAAAAAAAAVAAUAAwAAAAAAAAAVAAYAAwAAAAAAAAAVAAcAAwAAAAAAAAAWAAQAAwAAAAAAAAAWAAUAAwAAAAAAAAAWAAYAAwAAAAAAAAAWAAcAAwAAAAAAAAAXAAQAAwAAAAAAAAAXAAUAAwAAAAAAAAAXAAYAAwAAAAAAAAAXAAcAAwAAAAAAAAAYAAQAAwAAAAAAAAAYAAUAAwAAAAAAAAAYAAYAAwAAAAAAAAAYAAcAAwAAAAAAAAAZAAQAAwAAAAAAAAAZAAUAAwAAAAAAAAAZAAYAAwAAAAAAAAAZAAcAAwAAAAAAAAAaAAQAAwAAAAAAAAAaAAUAAwAAAAAAAAAaAAYAAwAAAAAAAAAaAAcAAwAAAAAAAAAbAAQAAwAAAAAAAAAbAAUAAwAAAAAAAAAbAAYAAwAAAAAAAAAbAAcAAwAAAAAAAAAcAAQAAwAAAAAAAAAcAAUAAwAAAAAAAAAcAAYAAwAAAAAAAAAcAAcAAwAAAAAAAAAdAAQAAwAAAAAAAAAdAAUAAwAAAAAAAAAdAAYAAwAAAAAAAAAdAAcAAwAAAAAAAAAeAAQAAwAAAAAAAAAeAAUAAwAAAAAAAAAeAAYAAwAAAAAAAAAeAAcAAwAAAAAAAAAfAAQAAwAAAAAAAAAfAAUAAwAAAAAAAAAfAAYAAwAAAAAAAAAfAAcAAwAAAAAAAAAgAAQAAwAAAAAAAAAgAAUAAwAAAAAAAAAgAAYAAwAAAAAAAAAgAAcAAwAAAAAAAAAhAAQAAwAAAAAAAAAhAAUAAwAAAAAAAAAhAAYAAwAAAAAAAAAhAAcAAwAAAAAAAAAiAAQAAwAAAAAAAAAiAAUAAwAAAAAAAAAiAAYAAwAAAAAAAAAiAAcAAwAAAAAAAAAjAAQAAwAAAAAAAAAjAAUAAwAAAAAAAAAjAAYAAwAAAAAAAAAjAAcAAwAAAAAAAAAkAAQAAwAAAAAAAAAkAAUAAwAAAAAAAAAkAAYAAwAAAAAAAAAkAAcAAwAAAAAAAAAlAAQAAwAAAAAAAAAlAAUAAwAAAAAAAAAlAAYAAwAAAAAAAAAlAAcAAwAAAAAAAAAmAAQAAwAAAAAAAAAmAAUAAwAAAAAAAAAmAAYAAwAAAAAAAAAmAAcAAwAAAAAAAAAnAAQAAwAAAAAAAAAnAAUAAwAAAAAAAAAnAAYAAwAAAAAAAAAnAAcAAwAAAAAAAAAoAAQAAwAAAAAAAAAoAAUAAwAAAAAAAAAoAAYAAwAAAAAAAAAoAAcAAwAAAAAAAAApAAQAAwAAAAAAAAApAAUAAwAAAAAAAAApAAYAAwAAAAAAAAApAAcAAwAAAAAAAAAqAAQAAwAAAAAAAAAqAAUAAwAAAAAAAAAqAAYAAwAAAAAAAAAqAAcAAwAAAAAAAAArAAQAAwAAAAAAAAArAAUAAwAAAAAAAAArAAYAAwAAAAAAAAArAAcAAwAAAAAAAAAsAAQAAwAAAAAAAAAsAAUAAwAAAAAAAAAsAAYAAwAAAAAAAAAsAAcAAwAAAAAAAAAtAAQAAwAAAAAAAAAtAAUAAwAAAAAAAAAtAAYAAwAAAAAAAAAtAAcAAwAAAAAAAAAuAAQAAwAAAAAAAAAuAAUAAwAAAAAAAAAuAAYAAwAAAAAAAAAuAAcAAwAAAAAAAAAvAAQAAwAAAAAAAAAvAAUAAwAAAAAAAAAvAAYAAwAAAAAAAAAvAAcAAwAAAAAAAAAwAAQAAwAAAAAAAAAwAAUAAwAAAAAAAAAwAAYAAwAAAAAAAAAwAAcAAwAAAAAAAAAxAAQAAwAAAAAAAAAxAAUAAwAAAAAAAAAxAAYAAwAAAAAAAAAxAAcAAwAAAAAAAAAyAAQAAwAAAAAAAAAyAAUAAwAAAAAAAAAyAAYAAwAAAAAAAAAyAAcAAwAAAAAAAAAzAAQAAwAAAAAAAAAzAAUAAwAAAAAAAAAzAAYAAwAAAAAAAAAzAAcAAwAAAAAAAAA0AAQAAwAAAAAAAAA0AAUAAwAAAAAAAAA0AAYAAwAAAAAAAAA0AAcAAwAAAAAAAAA1AAQAAwAAAAAAAAA1AAUAAwAAAAAAAAA1AAYAAwAAAAAAAAA1AAcAAwAAAAAAAAA2AAQAAwAAAAAAAAA2AAUAAwAAAAAAAAA2AAYAAwAAAAAAAAA2AAcAAwAAAAAAAADp/wQAAwAAAAAAAADp/wUAAwAAAAAAAADp/wYAAwAAAAAAAADp/wcAAwAAAAAAAADq/wQAAwAAAAAAAADq/wUAAwAAAAAAAADq/wYAAwAAAAAAAADq/wcAAwAAAAAAAADr/wQAAwAAAAAAAADr/wUAAwAAAAAAAADr/wYAAwAAAAAAAADr/wcAAwAAAAAAAADs/wQAAwAAAAAAAADs/wUAAwAAAAAAAADs/wYAAwAAAAAAAADs/wcAAwAAAAAAAADt/wQAAwAAAAAAAADt/wUAAwAAAAAAAADt/wYAAwAAAAAAAADt/wcAAwAAAAAAAADu/wQAAwAAAAAAAADu/wUAAwAAAAAAAADu/wYAAwAAAAAAAADu/wcAAwAAAAAAAADv/wQAAwAAAAAAAADv/wUAAwAAAAAAAADv/wYAAwAAAAAAAADv/wcAAwAAAAAAAADw/wQAAwAAAAAAAADw/wUAAwAAAAAAAADw/wYAAwAAAAAAAADw/wcAAwAAAAAAAAA3AAQAAwAAAAAAAAA3AAUAAwAAAAAAAAA3AAYAAwAAAAAAAAA3AAcAAwAAAAAAAAA4AAQAAwAAAAAAAAA4AAUAAwAAAAAAAAA4AAYAAwAAAAAAAAA4AAcAAwAAAAAAAAA5AAQAAwAAAAAAAAA5AAUAAwAAAAAAAAA5AAYAAwAAAAAAAAA5AAcAAwAAAAAAAAA6AAQAAwAAAAAAAAA6AAUAAwAAAAAAAAA6AAYAAwAAAAAAAAA6AAcAAwAAAAAAAAA7AAQAAwAAAAAAAAA7AAUAAwAAAAAAAAA7AAYAAwAAAAAAAAA7AAcAAwAAAAAAAAA8AAQAAwAAAAAAAAA8AAUAAwAAAAAAAAA8AAYAAwAAAAAAAAA8AAcAAwAAAAAAAAA9AAQAAwAAAAAAAAA9AAUAAwAAAAAAAAA9AAYAAwAAAAAAAAA9AAcAAwAAAAAAAAA+AAQAAwAAAAAAAAA+AAUAAwAAAAAAAAA+AAYAAwAAAAAAAAA+AAcAAwAAAAAAAAA/AAQAAwAAAAAAAAA/AAUAAwAAAAAAAAA/AAYAAwAAAAAAAAA/AAcAAwAAAAAAAABAAAQAAwAAAAAAAABAAAUAAwAAAAAAAABAAAYAAwAAAAAAAABAAAcAAwAAAAAAAABBAAQAAwAAAAAAAABBAAUAAwAAAAAAAABBAAYAAwAAAAAAAABBAAcAAwAAAAAAAABCAAQAAwAAAAAAAABCAAUAAwAAAAAAAABCAAYAAwAAAAAAAABCAAcAAwAAAAAAAABDAAQAAwAAAAAAAABDAAUAAwAAAAAAAABDAAYAAwAAAAAAAABDAAcAAwAAAAAAAABEAAQAAwAAAAAAAABEAAUAAwAAAAAAAABEAAYAAwAAAAAAAABEAAcAAwAAAAAAAABFAAQAAwAAAAAAAABFAAUAAwAAAAAAAABFAAYAAwAAAAAAAABFAAcAAwAAAAAAAABGAAQAAwAAAAAAAABGAAUAAwAAAAAAAABGAAYAAwAAAAAAAABGAAcAAwAAAAAAAABHAAQAAwAAAAAAAABHAAUAAwAAAAAAAABHAAYAAwAAAAAAAABHAAcAAwAAAAAAAABIAAQAAwAAAAAAAABIAAUAAwAAAAAAAABIAAYAAwAAAAAAAABIAAcAAwAAAAAAAABJAAQAAwAAAAAAAABJAAUAAwAAAAAAAABJAAYAAwAAAAAAAABJAAcAAwAAAAAAAABKAAQAAwAAAAAAAABKAAUAAwAAAAAAAABKAAYAAwAAAAAAAABKAAcAAwAAAAAAAABLAAQAAwAAAAAAAABLAAUAAwAAAAAAAABLAAYAAwAAAAAAAABLAAcAAwAAAAAAAABMAAQAAwAAAAAAAABMAAUAAwAAAAAAAABMAAYAAwAAAAAAAABMAAcAAwAAAAAAAABNAAQAAwAAAAAAAABNAAUAAwAAAAAAAABNAAYAAwAAAAAAAABNAAcAAwAAAAAAAABOAAQAAwAAAAAAAABOAAUAAwAAAAAAAABOAAYAAwAAAAAAAABOAAcAAwAAAAAAAABPAAQAAwAAAAAAAABPAAUAAwAAAAAAAABPAAYAAwAAAAAAAABPAAcAAwAAAAAAAABQAAQAAwAAAAAAAABQAAUAAwAAAAAAAABQAAYAAwAAAAAAAABQAAcAAwAAAAAAAABRAAQAAwAAAAAAAABRAAUAAwAAAAAAAABRAAYAAwAAAAAAAABRAAcAAwAAAAAAAABSAAQAAwAAAAAAAABSAAUAAwAAAAAAAABSAAYAAwAAAAAAAABSAAcAAwAAAAAAAABTAAQAAwAAAAAAAABTAAUAAwAAAAAAAABTAAYAAwAAAAAAAABTAAcAAwAAAAAAAABUAAQAAwAAAAAAAABUAAUAAwAAAAAAAABUAAYAAwAAAAAAAABUAAcAAwAAAAAAAABVAAQAAwAAAAAAAABVAAUAAwAAAAAAAABVAAYAAwAAAAAAAABVAAcAAwAAAAAAAABWAAQAAwAAAAAAAABWAAUAAwAAAAAAAABWAAYAAwAAAAAAAABWAAcAAwAAAAAAAABXAAQAAwAAAAAAAABXAAUAAwAAAAAAAABXAAYAAwAAAAAAAABXAAcAAwAAAAAAAABYAAQAAwAAAAAAAABYAAUAAwAAAAAAAABYAAYAAwAAAAAAAABYAAcAAwAAAAAAAABZAAQAAwAAAAAAAABZAAUAAwAAAAAAAABZAAYAAwAAAAAAAABZAAcAAwAAAAAAAABaAAQAAwAAAAAAAABaAAUAAwAAAAAAAABaAAYAAwAAAAAAAABaAAcAAwAAAAAAAABbAAQAAwAAAAAAAABbAAUAAwAAAAAAAABbAAYAAwAAAAAAAABbAAcAAwAAAAAAAABcAAQAAwAAAAAAAABcAAUAAwAAAAAAAABcAAYAAwAAAAAAAABcAAcAAwAAAAAAAABdAAQAAwAAAAAAAABdAAUAAwAAAAAAAABdAAYAAwAAAAAAAABdAAcAAwAAAAAAAABeAAQAAwAAAAAAAABeAAUAAwAAAAAAAABeAAYAAwAAAAAAAABeAAcAAwAAAAAAAABfAAQAAwAAAAAAAABfAAUAAwAAAAAAAABfAAYAAwAAAAAAAABfAAcAAwAAAAAAAAAKAAcAAwAAAAAAAAAPAAQAAwAAAAAAAAAPAAUAAwAAAAAAAAAPAAYAAwAAAAAAAAAPAAcAAwAAAAAAAAAQAAQAAwAAAAAAAAAQAAUAAwAAAAAAAAAQAAYAAwAAAAAAAAAQAAcAAwAAAAAAAAARAAQAAwAAAAAAAAARAAUAAwAAAAAAAAARAAYAAwAAAAAAAAARAAcAAwAAAAAAAAASAAQAAwAAAAAAAAASAAUAAwAAAAAAAAASAAYAAwAAAAAAAAASAAcAAwAAAAAAAAATAAQAAwAAAAAAAAATAAUAAwAAAAAAAAATAAYAAwAAAAAAAAATAAcAAwAAAAAAAAAUAAQAAwAAAAAAAAAUAAUAAwAAAAAAAAAUAAYAAwAAAAAAAAAUAAcAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_8vnex")
+
+[node name="WorldBoundary" type="StaticBody2D" parent="."]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_xc0ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary"]
+shape = SubResource("WorldBoundaryShape2D_y50h6")
+
+[node name="DeathZones" type="Area2D" parent="."]
+
+[node name="Out Of Map" type="CollisionShape2D" parent="DeathZones"]
+position = Vector2(296, 0)
+shape = SubResource("WorldBoundaryShape2D_eno21")
+
+[node name="HUD" parent="." instance=ExtResource("12_flk4d")]
+
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("16_ws55l")]
+
+[node name="School" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(592, 334)
+scale = Vector2(1.79792, 1.0037)
+texture = ExtResource("18_re307")
 
 [connection signal="moving_levels" from="Player" to="HUD" method="_on_player_moving_levels"]
 [connection signal="points_scored" from="Player" to="HUD" method="_on_player_points_scored"]

@@ -5,8 +5,8 @@ signal write_done
 
 
 var char_each_loop = 1
-var accel = 3.5
-var min_time = 0.03
+var accel = 2
+var min_time = 0.05
 
 var _full_text: String = ""
 var _timer: float = 0.0

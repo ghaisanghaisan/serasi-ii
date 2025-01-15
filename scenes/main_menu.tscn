@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cowenw02xk2sx"]
+[gd_scene load_steps=15 format=3 uid="uid://cowenw02xk2sx"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ee05l"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="1_kjlkl"]
 [ext_resource type="FontFile" uid="uid://dtr4d735iiww0" path="res://assets/Fonts/SuperMario256.ttf" id="2_l0hxt"]
 [ext_resource type="Texture2D" uid="uid://cg6pfyawnykyk" path="res://assets/opening/Copy of Website SERASI 2025.png" id="2_u2vnr"]
+[ext_resource type="Script" path="res://scenes/aspire.gd" id="4_040gh"]
 [ext_resource type="Texture2D" uid="uid://c2bf0rt30likg" path="res://assets/s9/aspire.png" id="5_0lvls"]
 [ext_resource type="Texture2D" uid="uid://drq1d7nes8qtl" path="res://assets/s9/pager.png" id="5_h727r"]
 [ext_resource type="Texture2D" uid="uid://dj5pn4if4w54i" path="res://assets/s9/cloud.png" id="6_uati5"]
@@ -55,11 +56,14 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_p4q60")
 position = Vector2(134, 538)
 scale = Vector2(0.235368, 0.235368)
 texture = ExtResource("5_0lvls")
+script = ExtResource("4_040gh")
 
 [node name="Serren" type="Sprite2D" parent="."]
 position = Vector2(257, 534)
 scale = Vector2(0.251102, 0.251102)
 texture = ExtResource("6_xrx6f")
+script = ExtResource("4_040gh")
+_timer = 3
 
 [node name="Pager" type="Sprite2D" parent="."]
 position = Vector2(1080, 464)

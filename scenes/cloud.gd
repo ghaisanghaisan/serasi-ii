@@ -2,8 +2,9 @@ extends Sprite2D
 
 
 @export var SPEED = 40
-@export var OSC_SPEED = PI/2
-var t = 0
+@export var OSC_SPEED:float = PI/2
+@export var OFFSET:float = 0
+var t = OFFSET
 var posy = 100
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	t += PI/2 * delta
+	t += OSC_SPEED * delta
 	position.x += SPEED * delta
 	position.y = posy + 10 * sin(t)
 	
