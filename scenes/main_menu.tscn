@@ -52,6 +52,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_p4q60")
 
+[node name="Cloud" type="Sprite2D" parent="."]
+position = Vector2(161, 203)
+scale = Vector2(0.415064, 0.415064)
+texture = ExtResource("6_uati5")
+script = ExtResource("7_hlo1i")
+
+[node name="Cloud2" type="Sprite2D" parent="."]
+position = Vector2(1123, 138)
+scale = Vector2(0.300481, 0.300481)
+texture = ExtResource("6_uati5")
+script = ExtResource("7_hlo1i")
+
 [node name="Aspire" type="Sprite2D" parent="."]
 position = Vector2(134, 538)
 scale = Vector2(0.235368, 0.235368)
@@ -69,18 +81,6 @@ _timer = 3
 position = Vector2(1080, 464)
 scale = Vector2(0.175413, 0.175413)
 texture = ExtResource("5_h727r")
-
-[node name="Cloud" type="Sprite2D" parent="."]
-position = Vector2(161, 203)
-scale = Vector2(0.415064, 0.415064)
-texture = ExtResource("6_uati5")
-script = ExtResource("7_hlo1i")
-
-[node name="Cloud2" type="Sprite2D" parent="."]
-position = Vector2(1123, 138)
-scale = Vector2(0.300481, 0.300481)
-texture = ExtResource("6_uati5")
-script = ExtResource("7_hlo1i")
 
 [node name="Watermark" type="MarginContainer" parent="."]
 layout_mode = 1

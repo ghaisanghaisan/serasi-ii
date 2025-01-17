@@ -4,16 +4,16 @@ var FormData =  {
   "Nama": "Danish",
   "Panggilan": "Ghaisan",
   "Kelas": "XA",
-  "FasilitasA": null,
-  "FasilitasB": null,
-  "FasilitasC": null,
-  "KBMA": null,
-  "KBMB": null,
-  "KinerjaA": null,
-  "KinerjaB": null,
-  "KinerjaC": null,
-  "EkskulA": null,
-  "EkskulB": null
+  "FasilitasA": "null",
+  "FasilitasB": "null",
+  "FasilitasC": "null",
+  "KBMA": "null",
+  "KBMB": "null",
+  "KinerjaA": "null",
+  "KinerjaB": "null",
+  "KinerjaC": "null",
+  "EkskulA": "null",
+  "EkskulB": "null"
 }
 
 enum Kelas {
@@ -50,11 +50,14 @@ enum Questions {
 	EkskulB
 }
 
-var url = "localhost:8080"
+var url = "https://script.google.com/macros/s/AKfycbzlkIUAjWJIycrAm9N9FJUHeKCbTvf7HTYCFceRoiazcmh0X_zoFhSWbit0UOxgs3Iy/exec"
 
 func submit():
 	var body = JSON.stringify(FormData)
 	var headers = ["Content-Type: application/json"]
+	var req = HTTPRequest.new()
+	add_child(req)
+	req.request(url, headers, HTTPClient.METHOD_POST, body)
 	print(body)
 
 func set_answer(question: Questions, answer: String):

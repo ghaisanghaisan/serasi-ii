@@ -62,7 +62,7 @@ distance = -128.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6moc"]
 size = Vector2(20, 148)
 
-[node name="level_fasilitas" type="Node2D"]
+[node name="level_ekskul" type="Node2D"]
 script = ExtResource("1_7eiaf")
 
 [node name="Castle" type="Sprite2D" parent="."]
@@ -165,8 +165,6 @@ script = ExtResource("15_050co")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
 position = Vector2(0, -38)
 shape = SubResource("RectangleShape2D_p6moc")
-
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource("10_gmedk")]
 

@@ -7,6 +7,8 @@ class_name Pipe
 const TOP_PIPE_HEIGHT = 16
 var is_ready = false
 
+@export var need_to_answer: Array[String] = []
+
 @export var height = 32:
 	set(new_height):
 		height = new_height
@@ -24,6 +26,8 @@ var is_ready = false
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var pipe_body_sprite: Sprite2D = $PipeBodySprite
+
+
 
 func _ready() -> void:
 	is_ready = true
