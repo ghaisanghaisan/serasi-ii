@@ -17,8 +17,9 @@ var choices_picked = [
 
 var child_n = 4
 
-func set_form():
-	pass
+func _ready():
+	print(SerasiForm.FormData[SerasiForm.Questions.keys()[question]])
+	
 
 func redraw_choices():
 	for i in range(child_n):
@@ -33,5 +34,6 @@ func pick_choice(index: int, choice: SerasiForm.MultiChoice):
 		choices_picked[i] = false
 	choices_picked[index] = true
 	redraw_choices()
-	
 	SerasiForm.set_multi_choice(question, choice);
+	print(SerasiForm.FormData[SerasiForm.Questions.keys()[question]])
+	

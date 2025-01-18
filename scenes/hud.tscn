@@ -150,25 +150,25 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
 [node name="left" type="TouchScreenButton" parent="."]
-position = Vector2(50, 550)
-scale = Vector2(1.5, 1.5)
+position = Vector2(8, 550)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("3_uiu25")
 action = "left"
 
 [node name="right" type="TouchScreenButton" parent="."]
-position = Vector2(200, 550)
-scale = Vector2(1.5, 1.5)
+position = Vector2(182, 550)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("4_4mmsh")
 action = "right"
 
 [node name="jump" type="TouchScreenButton" parent="."]
 position = Vector2(1110, 550)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("5_c5xi7")
 action = "jump"
 
 [node name="down" type="TouchScreenButton" parent="."]
-position = Vector2(960, 550)
-scale = Vector2(1.5, 1.5)
+position = Vector2(936, 550)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("6_yr0pq")
 action = "down"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://d22ldn7cuak65"]
+[gd_scene load_steps=24 format=3 uid="uid://d22ldn7cuak65"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5cl8p"]
 [ext_resource type="Texture2D" uid="uid://dn8wqcgftmaau" path="res://assets/die.png" id="2_60ur5"]
 [ext_resource type="Texture2D" uid="uid://cm0y0gruhc50g" path="res://assets/mario.png" id="2_p48rc"]
 [ext_resource type="Script" path="res://scripts/player_animated_sprite.gd" id="3_3lyjm"]
+[ext_resource type="Texture2D" uid="uid://jfm2y0t7fvph" path="res://assets/peach.png" id="4_50y76"]
 [ext_resource type="Shape2D" uid="uid://c0h8hpyksu1ie" path="res://resources/Collision Shapes/serasi_mario_collision_check.tres" id="4_oy28f"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="6_ywgfp"]
 
@@ -35,6 +36,38 @@ region = Rect2(240, 40, 40, 40)
 atlas = ExtResource("2_p48rc")
 region = Rect2(200, 40, 40, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jstkn"]
+atlas = ExtResource("4_50y76")
+region = Rect2(210, 0, 70, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts6vh"]
+atlas = ExtResource("4_50y76")
+region = Rect2(6, 10, 69, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8swj"]
+atlas = ExtResource("4_50y76")
+region = Rect2(489, 10, 69, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ndl8"]
+atlas = ExtResource("4_50y76")
+region = Rect2(75, 10, 69, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vj4h"]
+atlas = ExtResource("4_50y76")
+region = Rect2(282, 10, 69, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tat6e"]
+atlas = ExtResource("4_50y76")
+region = Rect2(351, 10, 69, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_310tk"]
+atlas = ExtResource("4_50y76")
+region = Rect2(420, 0, 70, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xopni"]
+atlas = ExtResource("4_50y76")
+region = Rect2(144, 10, 69, 80)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyf8u"]
 animations = [{
 "frames": [{
@@ -42,7 +75,7 @@ animations = [{
 "texture": ExtResource("2_60ur5")
 }],
 "loop": true,
-"name": &"die",
+"name": &"aspire_die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -50,7 +83,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xfnu2")
 }],
 "loop": true,
-"name": &"serasi_duck",
+"name": &"aspire_duck",
 "speed": 5.0
 }, {
 "frames": [{
@@ -58,7 +91,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_iyv5y")
 }],
 "loop": true,
-"name": &"serasi_idle",
+"name": &"aspire_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -66,7 +99,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8uh8k")
 }],
 "loop": true,
-"name": &"serasi_jump",
+"name": &"aspire_jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -77,7 +110,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kjp4n")
 }],
 "loop": true,
-"name": &"serasi_run",
+"name": &"aspire_run",
 "speed": 5.0
 }, {
 "frames": [{
@@ -85,7 +118,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vikm3")
 }],
 "loop": true,
-"name": &"serasi_slide",
+"name": &"aspire_slide",
 "speed": 5.0
 }, {
 "frames": [{
@@ -93,7 +126,61 @@ animations = [{
 "texture": SubResource("AtlasTexture_kgu06")
 }],
 "loop": true,
-"name": &"win",
+"name": &"aspire_win",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jstkn")
+}],
+"loop": true,
+"name": &"serren_duck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts6vh")
+}],
+"loop": true,
+"name": &"serren_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8swj")
+}],
+"loop": true,
+"name": &"serren_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ndl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vj4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tat6e")
+}],
+"loop": true,
+"name": &"serren_run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_310tk")
+}],
+"loop": true,
+"name": &"serren_slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xopni")
+}],
+"loop": true,
+"name": &"serren_win",
 "speed": 5.0
 }]
 
@@ -102,19 +189,21 @@ collision_mask = 30
 script = ExtResource("1_5cl8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_lyf8u")
-animation = &"serasi_duck"
+animation = &"serren_win"
 script = ExtResource("3_3lyjm")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 30
 
 [node name="AreaCollisionCheck" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -1.5)
+position = Vector2(-2, -1.5)
 shape = ExtResource("4_oy28f")
 
 [node name="BodyCollisionCheck" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
+position = Vector2(-2, -1.5)
 shape = ExtResource("4_oy28f")
 
 [node name="Label" type="Label" parent="."]

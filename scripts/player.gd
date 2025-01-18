@@ -49,6 +49,16 @@ var player_mode = PlayerMode.SERASI
 
 func _ready() -> void:
 	label.text = SerasiForm.FormData["Panggilan"]
+	
+	match Globals.avatar:
+		Globals.Avatar.Aspire:
+			animated_sprite_2d.scale = Vector2(1,1)
+			animated_sprite_2d.position = Vector2(0,0)
+		Globals.Avatar.Serren:
+			animated_sprite_2d.position = Vector2(-2,-2)
+			animated_sprite_2d.scale = Vector2(0.55, 0.55)
+
+	
 
 func player_movement(delta: float):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -149,7 +159,7 @@ func on_enemy_stomped():
 	
 func die():
 	is_dead = true
-	animated_sprite_2d.play("die")
+	animated_sprite_2d.die()
 	set_collision_layer_value(1, false)
 	set_physics_process(false)
 	

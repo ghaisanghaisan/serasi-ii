@@ -3,21 +3,28 @@ extends AnimatedSprite2D
 
 class_name PlayerAnimatedSprite
 
+
+func die():
+	var animation_prefix = Globals.Avatar.keys()[Globals.avatar].to_snake_case()
+
+	play("%s_die" % animation_prefix)
+
 func trigger_animation(velocity: Vector2, direction: int, player_mode: Player.PlayerMode, is_crouch: bool):
-	var animation_prefix = Player.PlayerMode.keys()[player_mode].to_snake_case()
 	
+	var animation_prefix = Globals.Avatar.keys()[Globals.avatar].to_snake_case()
+
 	if not get_parent().is_on_floor():
 		play("%s_jump" % animation_prefix)
 	# handle slide
 	elif sign(velocity.x) != sign(direction) && velocity.x != 0 && direction != 0:
 		play("%s_slide" % animation_prefix)
-		scale.x = direction
+		scale.x = direction if scale.x == 1 || scale.x == -1 else direction * 0.55
 	# handle flipping
 	else:
-		if (scale.x == 1 && sign(velocity.x) == -1) || (scale.x == -1 && sign(velocity.x) == 1):
+		if (sign(scale.x) == 1 && sign(velocity.x) == -1) || (sign(scale.x) == -1 && sign(velocity.x) == 1):
 			scale.x *= -1
-		elif scale.x == -1 && sign(velocity.x) == 1:
-			scale.x = 1
+		elif sign(scale.x) == -1 && sign(velocity.x) == 1:
+			scale.x *= -1
 
 		# run and idle
 		if velocity.x != 0:

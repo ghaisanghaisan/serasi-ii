@@ -11,13 +11,13 @@ question = 2
 position = Vector2(8, 0)
 
 [node name="MultiChoiceBlock2" parent="." instance=ExtResource("2_qa1fs")]
-position = Vector2(104, 0)
+position = Vector2(88, 0)
 choice = 1
 
 [node name="MultiChoiceBlock3" parent="." instance=ExtResource("2_qa1fs")]
-position = Vector2(200, 0)
+position = Vector2(168, 0)
 choice = 2
 
 [node name="MultiChoiceBlock4" parent="." instance=ExtResource("2_qa1fs")]
-position = Vector2(296, 0)
+position = Vector2(248, 0)
 choice = 3

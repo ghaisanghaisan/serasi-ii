@@ -17,6 +17,7 @@ func _ready() -> void:
 
 func bump():
 	super.bump()
+	print(index)
 	get_parent().pick_choice(index, choice)
 	
 	

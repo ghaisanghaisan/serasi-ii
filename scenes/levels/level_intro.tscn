@@ -74,6 +74,7 @@ distance = -152.0
 distance = -128.0
 
 [node name="level_intro" type="Node2D"]
+position = Vector2(-1, 0)
 script = ExtResource("1_1qpdv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -114,6 +115,7 @@ OFFSET = 0.785
 [node name="Text" type="Node" parent="."]
 
 [node name="Selamat Datang" type="Control" parent="Text"]
+z_index = -1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -121,9 +123,9 @@ offset_bottom = 40.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Text/Selamat Datang"]
 layout_mode = 0
-offset_top = -96.0
+offset_top = -102.0
 offset_right = 184.0
-offset_bottom = -48.0
+offset_bottom = -54.0
 theme = ExtResource("11_3m5q3")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
@@ -140,9 +142,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -132.0
+offset_top = -141.0
 offset_right = 164.0
-offset_bottom = -4.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -156,7 +158,35 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "
 
-[wave amp=50 freq=2][center][color=#009CDA]S[/color][color=#FCD000]E[/color][color=#E71E07]R[/color][color=#42B132]A[/color][color=#FCD000]S[/color][color=#E71E07]I[/color][/center][/wave]"
+[wave amp=50 freq=2][center][color=#bd120c]SERASI[/color][/center][/wave]"
+fit_content = true
+
+[node name="202" type="RichTextLabel" parent="Text/Selamat Datang"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -98.0
+offset_right = 163.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("11_r5kdb")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "
+
+[wave amp=30 freq=2][center][color=#f52c27]2025[/color][/center][/wave]
+"
 fit_content = true
 
 [node name="Penjelasan" type="Control" parent="Text"]
@@ -189,7 +219,7 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "
 
-[wave amp=50 freq=2][center][color=#009CDA]S[/color][color=#FCD000]E[/color][color=#E71E07]R[/color][color=#42B132]A[/color][color=#FCD000]S[/color][color=#E71E07]I[/color][/center][/wave]"
+[wave amp=50 freq=2][center][color=#bd120c]SERASI[/color][/center][/wave]"
 fit_content = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Text/Penjelasan"]
@@ -279,6 +309,9 @@ position = Vector2(56, 8)
 [node name="Brick2" parent="Bricks" instance=ExtResource("7_sdabh")]
 position = Vector2(72, 8)
 
+[node name="Brick7" parent="Bricks" instance=ExtResource("7_sdabh")]
+position = Vector2(40, 8)
+
 [node name="Brick3" parent="Bricks" instance=ExtResource("7_sdabh")]
 position = Vector2(88, 8)
 
@@ -287,6 +320,12 @@ position = Vector2(104, 8)
 
 [node name="Brick5" parent="Bricks" instance=ExtResource("7_sdabh")]
 position = Vector2(120, 8)
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("7_sdabh")]
+position = Vector2(136, 8)
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("7_sdabh")]
+position = Vector2(151, 8)
 
 [node name="Pipes" type="Node" parent="."]
 
@@ -322,12 +361,6 @@ position = Vector2(760, 56)
 
 [node name="Goomba2" parent="Enemies" instance=ExtResource("8_j5jdo")]
 position = Vector2(552, 56)
-
-[node name="Goomba4" parent="Enemies" instance=ExtResource("8_j5jdo")]
-position = Vector2(240, 56)
-
-[node name="Goomba3" parent="Enemies" instance=ExtResource("8_j5jdo")]
-position = Vector2(672, 56)
 
 [node name="Layer0" type="TileMapLayer" parent="."]
 use_parent_material = true
