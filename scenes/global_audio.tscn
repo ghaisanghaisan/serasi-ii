@@ -5,5 +5,8 @@
 
 [node name="GlobalAudio" type="AudioStreamPlayer"]
 stream = ExtResource("1_pb2i4")
+autoplay = true
 parameters/looping = true
 script = ExtResource("2_k7sqk")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

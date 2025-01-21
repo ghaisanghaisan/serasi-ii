@@ -7,4 +7,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if (!playing):
+		playing = true
+
+
+func _on_finished() -> void:
+	play()

@@ -47,7 +47,7 @@ func next_slide():
 		look += 1
 	
 	if look == len(slides):
-		GlobalAudio.play() 
+		GlobalAudio.play();
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")		
 	elif look == 1:
 		logo.show()

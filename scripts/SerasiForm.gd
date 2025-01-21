@@ -50,7 +50,7 @@ enum Questions {
 	EkskulB
 }
 
-var url = "https://script.google.com/macros/s/AKfycbzlkIUAjWJIycrAm9N9FJUHeKCbTvf7HTYCFceRoiazcmh0X_zoFhSWbit0UOxgs3Iy/exec"
+var url = "https://temporal-notch-ambert.glitch.me/aspirasi"
 #var url = "http://localhost:8080/Aspirasi/post"
 var HTTPNode = HTTPRequest.new()
 
@@ -58,8 +58,9 @@ func _ready():
 	add_child(HTTPNode)
 
 func submit():
-	var body = JSON.stringify(FormData)
-	var headers = ["Content-Type: application/json"]
+	var body = JSON.stringify({'aspirasi': FormData})
+	var headers = ["Content-Type: application/json", "admin_key: seemsthatourfateisparallelnevercrossingyetfrustatinglyclose"]
+
 	HTTPNode.request(url, headers, HTTPClient.METHOD_POST, body)
 	print(body)
 

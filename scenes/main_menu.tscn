@@ -82,26 +82,6 @@ position = Vector2(1080, 464)
 scale = Vector2(0.175413, 0.175413)
 texture = ExtResource("5_h727r")
 
-[node name="Watermark" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -48.0
-offset_right = 257.0
-grow_vertical = 0
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="LinkButton" type="LinkButton" parent="Watermark"]
-layout_mode = 2
-theme = ExtResource("1_kjlkl")
-theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 36
-text = "@ghaisanghaisan"
-underline = 1
-uri = "https://github.com/ghaisanghaisan"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
