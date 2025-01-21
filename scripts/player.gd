@@ -15,6 +15,7 @@ signal moving_levels
 signal on_submit_or_win(player_pos: Vector2) 
 
 const POINTS_LABEL_SCENE = preload("res://scenes/points_label.tscn")
+const NOT_DONE_LABEL_SCENE = preload("res://scenes/NotDoneLabel.tscn")
 const PIPE_ENTER_THRESHOLD = 8
 
 @onready var camera_2d: Camera2D = $Camera2D
@@ -22,6 +23,7 @@ const PIPE_ENTER_THRESHOLD = 8
 @onready var area_collision_check: CollisionShape2D = $Area2D/AreaCollisionCheck
 @onready var body_collision_check: CollisionShape2D = $BodyCollisionCheck
 @onready var label: Label = $Label
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 var is_dead = false
@@ -45,12 +47,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var stomp_bump = -150
 @export_group("")
 
-var player_mode = PlayerMode.SERASI
+@onready var player_mode = Globals.avatar
 
 func _ready() -> void:
 	label.text = SerasiForm.FormData["Panggilan"]
 	
-	match Globals.avatar:
+	match player_mode:
 		Globals.Avatar.Aspire:
 			animated_sprite_2d.scale = Vector2(1,1)
 			animated_sprite_2d.position = Vector2(0,0)
@@ -62,6 +64,8 @@ func _ready() -> void:
 
 func player_movement(delta: float):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		audio_stream_player.play()
+		
 		velocity.y = jump_velocity
 		
 	#if Input.is_action_just_released("jump") and velocity.y < 0:
@@ -99,6 +103,7 @@ func _physics_process(delta: float) -> void:
 	
 func handle_movement_collision(collision: KinematicCollision2D):
 	var other_col = collision.get_collider()
+	
 	if other_col is Block:
 		var col_angle = rad_to_deg(collision.get_angle())
 		if roundf(col_angle) == 180:
@@ -106,14 +111,19 @@ func handle_movement_collision(collision: KinematicCollision2D):
 			
 	if other_col is Pipe:
 		if other_col.is_traverseable:
+			
 			var col_angle = rad_to_deg(collision.get_angle())
 			var is_want_enter = Input.is_action_pressed("right") if other_col.is_horizontal else Input.is_action_just_pressed("down")
 			var is_good_position = roundf(col_angle) == 90 if other_col.is_horizontal else roundf(col_angle) == 0
 			var is_within_threshold = absf(collision.get_collider().position.x - position.x) < PIPE_ENTER_THRESHOLD
 			if (is_good_position && is_want_enter && (other_col.is_horizontal || is_within_threshold)):
-				handle_pipe_collision(other_col.is_horizontal, other_col.to_scene)
+				handle_pipe_collision(other_col.is_horizontal, other_col.to_scene, other_col.question_done())
 				
-func handle_pipe_collision(horizontal: bool, to_scene: String):
+func handle_pipe_collision(horizontal: bool, to_scene: String, question_done: bool):
+	if !question_done:
+		spawn_notdone_label()
+		return
+				
 	var enter_tween = get_tree().create_tween()
 	
 	moving_levels.emit()
@@ -153,26 +163,34 @@ func spawn_points_label(enemy: Enemy):
 	
 	points_scored.emit(100)
 
+func spawn_notdone_label():
+	var not_done_label = NOT_DONE_LABEL_SCENE.instantiate()
+	not_done_label.fck = true
+	not_done_label.position = position + Vector2(-not_done_label.size.x / 2, -50);
+	get_tree().root.add_child(not_done_label)
+	
+
 func on_enemy_stomped():
 	velocity.y = stomp_bump
 	
 	
 func die():
 	is_dead = true
-	animated_sprite_2d.die()
+	animated_sprite_2d.play_p("die")
 	set_collision_layer_value(1, false)
 	set_physics_process(false)
 	
 	var death_tween = get_tree().create_tween()
 	death_tween.set_ease(Tween.EASE_OUT)
 	death_tween.tween_interval(.3)
-	death_tween.tween_property(self, "position", position + Vector2(0, -48), .4)
-	death_tween.chain().tween_property(self, "position", position + Vector2(0, 64), .3)
+	if(player_mode == Globals.Avatar.Aspire):
+		death_tween.tween_property(self, "position", position + Vector2(0, -48), .4)
+		death_tween.chain().tween_property(self, "position", position + Vector2(0, 64), .3)
 	death_tween.tween_callback(func (): get_tree().reload_current_scene())
 	
 func win():
 	can_move = false;
-	animated_sprite_2d.play("serasi_run")
+	animated_sprite_2d.play_p("run")
 	position.y = 52
 	animating = true;
 	
@@ -182,7 +200,7 @@ func win():
 	
 	
 func win_callback():
-	animated_sprite_2d.play("win")
+	animated_sprite_2d.play_p("win")
 	SerasiForm.submit()
 	on_submit_or_win.emit(position)
 	

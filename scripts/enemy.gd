@@ -21,7 +21,11 @@ func _process(delta: float) -> void:
 		direction *= -1
 		scale.x *= -1
 		position.x += direction * horizontal_speed * delta * 10
+		ray_front.enabled = false
 		print("colliding euy")
+		
+	await get_tree().create_timer(0.3)
+	ray_front.enabled = true
 
 func die():
 	horizontal_speed = 0

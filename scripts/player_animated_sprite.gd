@@ -4,10 +4,9 @@ extends AnimatedSprite2D
 class_name PlayerAnimatedSprite
 
 
-func die():
+func play_p(anim: String):
 	var animation_prefix = Globals.Avatar.keys()[Globals.avatar].to_snake_case()
-
-	play("%s_die" % animation_prefix)
+	play("%s_%s" % [animation_prefix, anim])
 
 func trigger_animation(velocity: Vector2, direction: int, player_mode: Player.PlayerMode, is_crouch: bool):
 	

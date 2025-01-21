@@ -1,21 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkl3tuvaa4upn"]
+[gd_scene load_steps=15 format=3 uid="uid://dkl3tuvaa4upn"]
 
 [ext_resource type="Script" path="res://scripts/character_creation.gd" id="1_pdy0p"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="2_dip12"]
-[ext_resource type="Texture2D" uid="uid://cg6pfyawnykyk" path="res://assets/opening/Copy of Website SERASI 2025.png" id="2_gk481"]
+[ext_resource type="Texture2D" uid="uid://ml7ff6lwe55k" path="res://assets/opening/Copy of Website SERASI 2025(1).png" id="2_ujooa"]
 [ext_resource type="Script" path="res://scripts/kelas_pick.gd" id="3_1oi3g"]
 [ext_resource type="Texture2D" uid="uid://dj5pn4if4w54i" path="res://assets/s9/cloud.png" id="3_u5801"]
 [ext_resource type="Script" path="res://scenes/cloud.gd" id="4_3t2ma"]
 [ext_resource type="PackedScene" uid="uid://chxju6pnvq85e" path="res://scenes/scene_transition_animation.tscn" id="5_uum3a"]
-[ext_resource type="Script" path="res://addons/Godot-Onscreen-Keyboard-0bc9a151e15c4c7482e55d07368476390f88beba/addons/onscreenkeyboard/onscreen_keyboard.gd" id="6_6xu2y"]
 [ext_resource type="Texture2D" uid="uid://c2bf0rt30likg" path="res://assets/s9/aspire.png" id="6_ojvio"]
 [ext_resource type="StyleBox" uid="uid://udqm5bs5wtbp" path="res://resources/aspire.tres" id="7_7qmlo"]
-[ext_resource type="FontFile" uid="uid://2qeldosicygg" path="res://assets/Fonts/GrapeSoda.ttf" id="7_435qb"]
 [ext_resource type="Texture2D" uid="uid://bjv55r4i4rwf0" path="res://assets/onscreen controls/lineLight19.png" id="8_acbpw"]
 [ext_resource type="StyleBox" uid="uid://d4egllwgfnjtl" path="res://resources/serren.tres" id="8_ecvka"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfaoi"]
-texture = ExtResource("2_gk481")
+texture = ExtResource("2_ujooa")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaqjf"]
 bg_color = Color(0.517647, 0.172549, 0.172549, 1)
@@ -196,11 +194,14 @@ theme = ExtResource("2_dip12")
 theme_override_font_sizes/font_size = 48
 text = "Nama Lengkap"
 
-[node name="LineEdit" type="LineEdit" parent="Panel2/HBoxContainer/MarginContainer/Fields/Nama Lengkap"]
+[node name="LineEdit" type="TextEdit" parent="Panel2/HBoxContainer/MarginContainer/Fields/Nama Lengkap"]
 layout_mode = 2
 theme = ExtResource("2_dip12")
 theme_override_font_sizes/font_size = 36
 placeholder_text = "Tulis nama lengkapmu"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+scroll_fit_content_height = true
 
 [node name="Nama Panggilan" type="VBoxContainer" parent="Panel2/HBoxContainer/MarginContainer/Fields"]
 layout_mode = 2
@@ -211,12 +212,14 @@ theme = ExtResource("2_dip12")
 theme_override_font_sizes/font_size = 48
 text = "Nama Panggilan"
 
-[node name="LineEdit" type="LineEdit" parent="Panel2/HBoxContainer/MarginContainer/Fields/Nama Panggilan"]
+[node name="LineEdit" type="TextEdit" parent="Panel2/HBoxContainer/MarginContainer/Fields/Nama Panggilan"]
 layout_mode = 2
 theme = ExtResource("2_dip12")
 theme_override_font_sizes/font_size = 36
 placeholder_text = "Tulis nama panggilanmu"
-max_length = 8
+context_menu_enabled = false
+shortcut_keys_enabled = false
+scroll_fit_content_height = true
 
 [node name="Kelas" type="VBoxContainer" parent="Panel2/HBoxContainer/MarginContainer/Fields"]
 layout_mode = 2
@@ -229,13 +232,55 @@ text = "Kelas
 "
 
 [node name="Kelas Pick" type="OptionButton" parent="Panel2/HBoxContainer/MarginContainer/Fields/Kelas"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_dip12")
+theme_override_font_sizes/font_size = 36
+action_mode = 1
+selected = 0
+allow_reselect = true
+item_count = 1
+popup/item_0/text = "Pilih Kelas mu!"
+popup/item_0/disabled = true
+script = ExtResource("3_1oi3g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2/HBoxContainer/MarginContainer/Fields/Kelas"]
+layout_mode = 2
+
+[node name="Kelas" type="OptionButton" parent="Panel2/HBoxContainer/MarginContainer/Fields/Kelas/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_dip12")
 theme_override_font_sizes/font_size = 36
 selected = 0
-item_count = 1
-popup/item_0/text = "Pilih Kelas mu!"
-popup/item_0/disabled = true
+item_count = 3
+popup/item_0/text = "10"
+popup/item_1/text = "11"
+popup/item_1/id = 1
+popup/item_2/text = "12"
+popup/item_2/id = 2
+script = ExtResource("3_1oi3g")
+
+[node name="KelasAb" type="OptionButton" parent="Panel2/HBoxContainer/MarginContainer/Fields/Kelas/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_dip12")
+theme_override_font_sizes/font_size = 36
+selected = 0
+item_count = 8
+popup/item_0/text = "A"
+popup/item_1/text = "B"
+popup/item_1/id = 1
+popup/item_2/text = "C"
+popup/item_2/id = 2
+popup/item_3/text = "D"
+popup/item_3/id = 3
+popup/item_4/text = "E"
+popup/item_4/id = 4
+popup/item_5/text = "F"
+popup/item_5/id = 5
+popup/item_6/text = "G"
+popup/item_6/id = 6
+popup/item_7/text = "H"
+popup/item_7/id = 7
 script = ExtResource("3_1oi3g")
 
 [node name="Submit" type="Button" parent="Panel2/HBoxContainer/MarginContainer"]
@@ -256,20 +301,7 @@ icon = ExtResource("8_acbpw")
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("5_uum3a")]
 
-[node name="OnscreenKeyboard" type="PanelContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -244.0
-offset_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("6_6xu2y")
-font = ExtResource("7_435qb")
-font_size = 36
+[node name="Node" type="Node" parent="."]
 
 [connection signal="pressed" from="Panel2/HBoxContainer/Avatar/HBoxContainer/Aspire" to="." method="_on_aspire_pressed"]
 [connection signal="pressed" from="Panel2/HBoxContainer/Avatar/HBoxContainer/Serren" to="." method="_on_serren_pressed"]

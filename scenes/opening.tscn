@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dcxo5ym5v62df"]
 
 [ext_resource type="Script" path="res://scenes/opening.gd" id="1_8fu4l"]
-[ext_resource type="Texture2D" uid="uid://cg6pfyawnykyk" path="res://assets/opening/Copy of Website SERASI 2025.png" id="2_024tm"]
+[ext_resource type="Texture2D" uid="uid://ml7ff6lwe55k" path="res://assets/opening/Copy of Website SERASI 2025(1).png" id="2_gbkra"]
 [ext_resource type="Texture2D" uid="uid://dj5pn4if4w54i" path="res://assets/s9/cloud.png" id="3_rdtq5"]
 [ext_resource type="FontFile" uid="uid://dtr4d735iiww0" path="res://assets/Fonts/SuperMario256.ttf" id="3_vbvq0"]
 [ext_resource type="Script" path="res://scenes/cloud.gd" id="4_x8u5x"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://chxju6pnvq85e" path="res://scenes/scene_transition_animation.tscn" id="7_ut7p4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4k4rs"]
-texture = ExtResource("2_024tm")
+texture = ExtResource("2_gbkra")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuhd1"]
 bg_color = Color(0.62, 0.1674, 0.1674, 1)
@@ -185,7 +185,7 @@ grow_vertical = 2
 theme = ExtResource("6_a8cbk")
 theme_override_font_sizes/font_size = 48
 text = "Ayo berikan aspirasi terbaikmu dan dapatkan penghargaan spesial dari kami!
-Your Aspiration Matters! ✨"
+Your Aspiration Matters! "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

@@ -1,21 +1,22 @@
 extends Control
 
-@onready var NamaInput: LineEdit = $"Panel2/HBoxContainer/MarginContainer/Fields/Nama Lengkap/LineEdit"
-@onready var PanggilanInput: LineEdit = $"Panel2/HBoxContainer/MarginContainer/Fields/Nama Panggilan/LineEdit"
-@onready var KelasOption: OptionButton = $"Panel2/HBoxContainer/MarginContainer/Fields/Kelas/Kelas Pick"
+@onready var NamaInput: TextEdit = $"Panel2/HBoxContainer/MarginContainer/Fields/Nama Lengkap/LineEdit"
+@onready var PanggilanInput: TextEdit = $"Panel2/HBoxContainer/MarginContainer/Fields/Nama Panggilan/LineEdit"
 @onready var scene_transition_animation: AnimationPlayer = $SceneTransitionAnimation/AnimationPlayer
 @onready var gambar: Panel = $Panel2/HBoxContainer/Avatar/gambar
+@onready var kelas: OptionButton = $Panel2/HBoxContainer/MarginContainer/Fields/Kelas/HBoxContainer/Kelas
+@onready var kelas_ab: OptionButton = $Panel2/HBoxContainer/MarginContainer/Fields/Kelas/HBoxContainer/KelasAb
 
 const aspire = preload("res://resources/aspire.tres")
 const serren = preload("res://resources/serren.tres")
 
 func _on_submit_pressed() -> void:
-	if NamaInput.text.length() == 0 || PanggilanInput.text.length() == 0 || KelasOption.get_selected_id() == 0:
+	if NamaInput.text.length() == 0 || PanggilanInput.text.length() == 0:
 		print("Bad form data")
 		return;
 	SerasiForm.set_answer(SerasiForm.Questions.Nama, NamaInput.text)
 	SerasiForm.set_answer(SerasiForm.Questions.Panggilan, PanggilanInput.text)
-	var kelas = SerasiForm.Kelas.keys()[KelasOption.get_selected_id() - 1]
+	var kelas = kelas.text + kelas_ab.text
 	SerasiForm.set_answer(SerasiForm.Questions.Kelas, kelas)
 	
 	

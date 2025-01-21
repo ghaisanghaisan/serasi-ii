@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://do83mve1wulrj"]
+
+[ext_resource type="AudioStream" uid="uid://3u62pfhk6a33" path="res://assets/Super Mario Bros. Theme Song.mp3" id="1_pb2i4"]
+[ext_resource type="Script" path="res://scripts/audio_stream_player_2d.gd" id="2_k7sqk"]
+
+[node name="GlobalAudio" type="AudioStreamPlayer"]
+stream = ExtResource("1_pb2i4")
+parameters/looping = true
+script = ExtResource("2_k7sqk")

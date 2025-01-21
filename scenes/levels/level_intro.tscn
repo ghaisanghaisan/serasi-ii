@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://ccopth37esdvc"]
+[gd_scene load_steps=32 format=4 uid="uid://ccopth37esdvc"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_1qpdv"]
 [ext_resource type="PackedScene" uid="uid://d22ldn7cuak65" path="res://scenes/player.tscn" id="1_4ayib"]
@@ -17,7 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://osadctn5vqg5" path="res://scenes/hud.tscn" id="12_flk4d"]
 [ext_resource type="Script" path="res://scenes/cloud.gd" id="12_sjlpb"]
 [ext_resource type="PackedScene" uid="uid://chxju6pnvq85e" path="res://scenes/scene_transition_animation.tscn" id="16_ws55l"]
-[ext_resource type="Texture2D" uid="uid://c8ew4ral12a5l" path="res://assets/s9/school.png" id="18_re307"]
+[ext_resource type="Texture2D" uid="uid://crhdkj4vvgt82" path="res://assets/s9/castle.png" id="18_wimvc"]
+[ext_resource type="Texture2D" uid="uid://drq1d7nes8qtl" path="res://assets/s9/pager.png" id="19_e0ec6"]
 
 [sub_resource type="Gradient" id="Gradient_tck0u"]
 offsets = PackedFloat32Array(0.315436, 1)
@@ -357,7 +358,7 @@ height = 100
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Goomba" parent="Enemies" instance=ExtResource("8_j5jdo")]
-position = Vector2(760, 56)
+position = Vector2(174, 56)
 
 [node name="Goomba2" parent="Enemies" instance=ExtResource("8_j5jdo")]
 position = Vector2(552, 56)
@@ -385,11 +386,59 @@ shape = SubResource("WorldBoundaryShape2D_eno21")
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("16_ws55l")]
 
-[node name="School" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(592, 334)
-scale = Vector2(1.79792, 1.0037)
-texture = ExtResource("18_re307")
+[node name="Castle" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-125, -2)
+scale = Vector2(0.0773926, 0.0773926)
+texture = ExtResource("18_wimvc")
+
+[node name="Pager" type="Sprite2D" parent="."]
+z_index = -99
+position = Vector2(-257, 13)
+scale = Vector2(0.0517578, 0.0517578)
+texture = ExtResource("19_e0ec6")
+
+[node name="Pager2" type="Sprite2D" parent="."]
+z_index = -99
+position = Vector2(884, 13)
+scale = Vector2(0.0517578, 0.0517578)
+texture = ExtResource("19_e0ec6")
+
+[node name="Pager3" type="Sprite2D" parent="."]
+z_index = -99
+position = Vector2(709, 13)
+scale = Vector2(0.0517578, 0.0517578)
+texture = ExtResource("19_e0ec6")
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+offset_left = 775.0
+offset_top = 127.0
+offset_right = 1079.0
+offset_bottom = 196.0
+rotation = -1.5708
+theme = ExtResource("11_3m5q3")
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[wave amp=50 freq=8][center]V
+V
+V[/center]"
+fit_content = true
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="."]
+offset_left = 258.0
+offset_top = 186.0
+offset_right = 562.0
+offset_bottom = 255.0
+rotation = -1.5708
+theme = ExtResource("11_3m5q3")
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[wave amp=50 freq=8][center]V
+V
+V[/center]"
+fit_content = true
 
 [connection signal="moving_levels" from="Player" to="HUD" method="_on_player_moving_levels"]
 [connection signal="points_scored" from="Player" to="HUD" method="_on_player_points_scored"]

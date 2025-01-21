@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://mn4tw8p0cek1"]
+[gd_scene load_steps=10 format=3 uid="uid://mn4tw8p0cek1"]
 
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="1_031cg"]
-[ext_resource type="Texture2D" uid="uid://cmf0bmc8k88nf" path="res://assets/bg_test.png" id="1_d30eu"]
+[ext_resource type="Texture2D" uid="uid://ml7ff6lwe55k" path="res://assets/opening/Copy of Website SERASI 2025(1).png" id="2_i2lov"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="2_lbyql"]
 [ext_resource type="FontFile" uid="uid://dtr4d735iiww0" path="res://assets/Fonts/SuperMario256.ttf" id="3_6kpj5"]
+[ext_resource type="Texture2D" uid="uid://dj5pn4if4w54i" path="res://assets/s9/cloud.png" id="3_r1t1n"]
+[ext_resource type="Script" path="res://scenes/cloud.gd" id="4_421p2"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sm03u"]
-texture = ExtResource("1_d30eu")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_on4io"]
+texture = ExtResource("2_i2lov")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l00q1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tr5k"]
+bg_color = Color(0, 0, 0, 0)
 
 [node name="End Screen" type="Control"]
 layout_mode = 3
@@ -17,14 +25,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_031cg")
 
-[node name="Background" type="Panel" parent="."]
+[node name="Background2" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_sm03u")
+theme_override_styles/panel = SubResource("StyleBoxTexture_on4io")
+
+[node name="Cloud" type="Sprite2D" parent="."]
+position = Vector2(161, 203)
+scale = Vector2(0.415064, 0.415064)
+texture = ExtResource("3_r1t1n")
+script = ExtResource("4_421p2")
+
+[node name="Cloud2" type="Sprite2D" parent="."]
+position = Vector2(1123, 138)
+scale = Vector2(0.300481, 0.300481)
+texture = ExtResource("3_r1t1n")
+script = ExtResource("4_421p2")
 
 [node name="Watermark" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -82,3 +102,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -394.0
+offset_top = -55.0
+offset_right = -22.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+theme = ExtResource("2_lbyql")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[wave amp=25 freq=2]klik untuk menfess >>>[/wave]"
+fit_content = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_l00q1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4tr5k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_l00q1")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

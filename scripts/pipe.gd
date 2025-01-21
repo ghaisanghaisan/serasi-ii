@@ -49,4 +49,13 @@ func _on_height_set():
 	shape.size = Vector2(32, height)
 	collision_shape_2d.shape = shape
 	collision_shape_2d.position = Vector2(0, height/2 - TOP_PIPE_HEIGHT/2)
+	
+	
+func question_done() -> bool:
+	var done = true
+	for q in need_to_answer:
+		if (len(SerasiForm.FormData[q]) == 0):
+			done = false
+			
+	return done
 	 

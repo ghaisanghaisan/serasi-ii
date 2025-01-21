@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwmx0j72n6cs4"]
+[gd_scene load_steps=4 format=3 uid="uid://bwmx0j72n6cs4"]
 
 [ext_resource type="Script" path="res://scripts/question.gd" id="1_ogb2a"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="1_xlefw"]
-[ext_resource type="Script" path="res://addons/Godot-Onscreen-Keyboard-0bc9a151e15c4c7482e55d07368476390f88beba/addons/onscreenkeyboard/onscreen_keyboard.gd" id="3_3b2tf"]
-[ext_resource type="FontFile" uid="uid://2qeldosicygg" path="res://assets/Fonts/GrapeSoda.ttf" id="4_lgmbo"]
+[ext_resource type="Script" path="res://scenes/text_edit.gd" id="3_amwt6"]
 
 [node name="Question" type="CanvasLayer"]
 layer = 50
@@ -52,7 +51,7 @@ theme_override_constants/margin_bottom = 48
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 7
+theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 200)
@@ -71,9 +70,16 @@ theme = ExtResource("1_xlefw")
 theme_override_colors/background_color = Color(0.680321, 0.680321, 0.680321, 1)
 theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 48
 placeholder_text = "Tulis pendapat mu disini!"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
 wrap_mode = 1
+script = ExtResource("3_amwt6")
 
 [node name="Button" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -81,18 +87,5 @@ theme = ExtResource("1_xlefw")
 theme_override_font_sizes/font_size = 48
 text = "SIMPAN"
 
-[node name="OnscreenKeyboard" type="PanelContainer" parent="."]
-visible = false
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -244.0
-offset_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("3_3b2tf")
-font = ExtResource("4_lgmbo")
-font_size = 36
-
+[connection signal="focus_entered" from="Control/ColorRect/MarginContainer/VBoxContainer/TextEdit" to="Control/ColorRect/MarginContainer/VBoxContainer/TextEdit" method="_on_focus_entered"]
 [connection signal="pressed" from="Control/ColorRect/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

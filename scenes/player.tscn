@@ -1,12 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://d22ldn7cuak65"]
+[gd_scene load_steps=27 format=3 uid="uid://d22ldn7cuak65"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5cl8p"]
 [ext_resource type="Texture2D" uid="uid://dn8wqcgftmaau" path="res://assets/die.png" id="2_60ur5"]
 [ext_resource type="Texture2D" uid="uid://cm0y0gruhc50g" path="res://assets/mario.png" id="2_p48rc"]
 [ext_resource type="Script" path="res://scripts/player_animated_sprite.gd" id="3_3lyjm"]
 [ext_resource type="Texture2D" uid="uid://jfm2y0t7fvph" path="res://assets/peach.png" id="4_50y76"]
+[ext_resource type="Texture2D" uid="uid://clhodsymscj7e" path="res://assets/IMG_0591.png" id="4_eyyrd"]
 [ext_resource type="Shape2D" uid="uid://c0h8hpyksu1ie" path="res://resources/Collision Shapes/serasi_mario_collision_check.tres" id="4_oy28f"]
 [ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="6_ywgfp"]
+[ext_resource type="AudioStream" uid="uid://c003ehxtwxw62" path="res://assets/Mario Jump Sound Effect.mp3" id="9_qaxho"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfnu2"]
 atlas = ExtResource("2_p48rc")
@@ -35,6 +37,10 @@ region = Rect2(240, 40, 40, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kgu06"]
 atlas = ExtResource("2_p48rc")
 region = Rect2(200, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63h5q"]
+atlas = ExtResource("4_eyyrd")
+region = Rect2(0, 0, 150, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jstkn"]
 atlas = ExtResource("4_50y76")
@@ -131,6 +137,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_63h5q")
+}],
+"loop": true,
+"name": &"serren_die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jstkn")
 }],
 "loop": true,
@@ -192,7 +206,8 @@ script = ExtResource("1_5cl8p")
 position = Vector2(0, -2)
 scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_lyf8u")
-animation = &"serren_win"
+animation = &"serren_die"
+frame_progress = 0.211635
 script = ExtResource("3_3lyjm")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -220,5 +235,10 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 12
 text = "Danish"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_qaxho")
+volume_db = -4.0
+pitch_scale = 0.98
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

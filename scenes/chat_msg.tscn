@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cotwlmd4u4g01"]
+
+[ext_resource type="Theme" uid="uid://dibhwi1n0b2i3" path="res://resources/ui_1_theme.tres" id="1_vcp76"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5ioj"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
+[node name="ChatMsg" type="MarginContainer"]
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_vcp76")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_d5ioj")
+text = "Test"
+text_overrun_behavior = 3

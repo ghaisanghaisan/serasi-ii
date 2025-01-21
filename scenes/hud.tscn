@@ -27,7 +27,7 @@ expand_margin_left = 6.0
 expand_margin_right = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_offwr"]
-bg_color = Color(0.517647, 0.172549, 0.172549, 1)
+bg_color = Color(0.517647, 0.172549, 0.172549, 0.662745)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -154,21 +154,27 @@ position = Vector2(8, 550)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("3_uiu25")
 action = "left"
+visibility_mode = 1
 
 [node name="right" type="TouchScreenButton" parent="."]
 position = Vector2(182, 550)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("4_4mmsh")
 action = "right"
+visibility_mode = 1
 
 [node name="jump" type="TouchScreenButton" parent="."]
 position = Vector2(1110, 550)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("5_c5xi7")
 action = "jump"
+visibility_mode = 1
 
 [node name="down" type="TouchScreenButton" parent="."]
 position = Vector2(936, 550)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("6_yr0pq")
 action = "down"
+visibility_mode = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

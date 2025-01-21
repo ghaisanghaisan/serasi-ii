@@ -15,13 +15,13 @@ run/main_scene="res://scenes/opening.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.952941, 0.952941, 0.952941, 1)
 boot_splash/show_image=false
-boot_splash/image="res://assets/Gmedia.png"
 config/icon="res://icon.svg"
 
 [autoload]
 
 SerasiForm="*res://scripts/SerasiForm.gd"
 Globals="*res://scripts/globals.gd"
+GlobalAudio="*res://scenes/global_audio.tscn"
 
 [display]
 
@@ -29,10 +29,6 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/resizable=false
 window/stretch/mode="canvas_items"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/Godot-Onscreen-Keyboard-0bc9a151e15c4c7482e55d07368476390f88beba/addons/onscreenkeyboard/plugin.cfg")
 
 [input]
 
